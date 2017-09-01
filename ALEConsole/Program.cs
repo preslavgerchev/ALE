@@ -10,10 +10,12 @@ namespace ALEConsole
     {
         static void Main(string[] args)
         {
-            string input = "&(>(A,B),~(C))";
-
-            input.ParseToTree();
-
+            var properOutput = "&(>(A,B),~(0))";
+            var nodes = properOutput.ParseToSymbols();
+            Console.WriteLine(string.Join(string.Empty, nodes.Select(n => n.ToString())));
+            Console.WriteLine(string.Join("\n", nodes.Select(n => n.GetType())));
+            Console.WriteLine();
+            Console.ReadLine();
         }
     }
 }

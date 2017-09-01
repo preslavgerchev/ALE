@@ -1,4 +1,4 @@
-﻿namespace ALEConsole.Nodes
+﻿namespace ALEConsole.Symbols
 {
     public class Connective : Symbol
     {
