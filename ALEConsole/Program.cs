@@ -10,6 +10,10 @@ namespace ALEConsole
     {
         static void Main(string[] args)
         {
+            string input = "&(>(A,B),~(C))";
+
+            input.ParseToTree();
+
         }
     }
 }
