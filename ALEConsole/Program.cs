@@ -14,10 +14,10 @@
             Console.WriteLine();
 
             var bla = GetParenthesisGroups(nodes);
-            foreach(var grp in bla)
+            foreach (var grp in bla)
             {
-               Console.WriteLine(string.Join(string.Empty, grp.Select(n => n.ToString())));
-               Console.WriteLine(Environment.NewLine);
+                Console.WriteLine(string.Join(string.Empty, grp.Select(n => n.ToString())));
+                Console.WriteLine(Environment.NewLine);
             }
 
             Console.ReadLine();
@@ -33,47 +33,49 @@
             var openingParenthesis = input
                 .Where(x => x is Parenthesis)
                 .Cast<Parenthesis>()
-                .Where(y => y.Side == ParenthesisSide.Opening)
-                .Select(x => new { parenthesis = x, place = input.IndexOf(x) });
+                .Count(y => y.Side == ParenthesisSide.Opening);
 
             var closingParenthesis = input
                 .Where(x => x is Parenthesis)
                 .Cast<Parenthesis>()
-                .Where(y => y.Side == ParenthesisSide.Closing)
-                .Select(x => new { parenthesis = x, place = input.IndexOf(x) });
+                .Count(y => y.Side == ParenthesisSide.Closing);
 
 
-            if (openingParenthesis.Count() != closingParenthesis.Count())
+            if (openingParenthesis != closingParenthesis)
                 // TODO custom exception, better message.
                 throw new ArgumentException("invalid expression.");
 
-            // TODO - should be taken into account that next ) is not always the proper one.
-            var reversedClosing = closingParenthesis.Reverse();
-            foreach (var item in openingParenthesis)
+            // TODO better algorithm for this. stack seems to work fine tho.
+            var parenthesisStack = new Stack<Parenthesis>();
+            var tupleList = new List<Tuple<Parenthesis, Parenthesis>>();
+            foreach (var symbol in input)
             {
-                Console.WriteLine(item.parenthesis.Side);
-                Console.WriteLine(item.place);
+                if (symbol is Parenthesis)
+                {
+                    // TODO use c# 7.0  is sugar syntax.
+                    var parenthesis = symbol as Parenthesis;
+                    if (parenthesis.Side == ParenthesisSide.Opening)
+                    {
+                        parenthesisStack.Push(parenthesis);
+                    }
+                    else
+                    {
+                        var opening = parenthesisStack.Pop();
+                        tupleList.Add(new Tuple<Parenthesis, Parenthesis>(opening, parenthesis));
+                    }
+                }
             }
 
-            foreach (var item in reversedClosing)
-            {
-                Console.WriteLine(item.parenthesis.Side);
-                Console.WriteLine(item.place);
-            }
-
+            // IndexOf should be changed. store at stack. new class -> index + Parenthesis?
+            var indexesCollection = tupleList.Select(x => new { openingIndex = input.IndexOf(x.Item1), closingIndex = input.IndexOf(x.Item2) });
             var groups = new List<IList<Symbol>>();
-            for (int i = 0; i < openingParenthesis.Count(); i++)
+            foreach (var pair in indexesCollection)
             {
-                var opening = openingParenthesis.ElementAt(i);
-                var closing = reversedClosing.ElementAt(i);
-              
-
-                var innerList = new List<Symbol>();
-                var toBeAdded = input.Skip(opening.place - 1).Take(closing.place - opening.place + 2);
-                innerList.AddRange(toBeAdded);
-                groups.Add(innerList);
+                // -1 to account for connective in front of the () pair. + 2 at take to account for the -1 in skip.
+                // TODO verify if all inputs are in CONNECTIVE(PREDICATE,PREDICATE) format?
+                var toBeAdded = input.Skip(pair.openingIndex - 1).Take(pair.closingIndex - pair.openingIndex + 2);
+                groups.Add(toBeAdded.ToList());
             }
-            
 
             return groups;
         }
