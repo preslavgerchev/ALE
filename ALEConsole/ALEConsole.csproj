@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\InvalidInputException.cs" />
     <Compile Include="Nodes\Node.cs" />
     <Compile Include="PropositionLogic\TreeCreator.cs" />
     <Compile Include="PropositionLogic\Validator.cs" />

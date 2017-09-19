@@ -1,8 +1,8 @@
 ﻿namespace ALEConsole.PropositionLogic
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Exceptions;
     using Symbols;
 
     public static class Validator
@@ -18,74 +18,90 @@
             if (allParenthesis.Count(x => x.Side == ParenthesisSide.Closing)
                 != allParenthesis.Count(x => x.Side == ParenthesisSide.Opening))
             {
-                throw new Exception("Amount of opening and closing parenthesis must match.");
+                throw new InvalidInputException("Amount of opening and closing parenthesis must match.");
             }
 
             var isConnectiveNegation = false;
             var predicatesInside = 0;
+            Symbol previous = null;
             for (var i = 0; i < symbols.Count; i++)
             {
                 if (i == 0)
                 {
-                    var symbol = symbols[i];
-                    if (symbols.Count == 1 && !(symbol is Predicate))
+                    previous = symbols[i];
+                    if (symbols.Count == 1 && !(previous is Predicate))
                     {
-                        throw new Exception("The input is a single char and mus be a predicate");
+                        throw new InvalidInputException("The input is a single char and mus be a predicate.");
                     }
-                    if (symbols.Count > 1 && !(symbol is Connective))
+                    if (symbols.Count > 1 && !(previous is Connective))
                     {
-                        throw new Exception("The input must always start with a connective");
+                        throw new InvalidInputException("The input must always start with a connective.");
                     }
+                    isConnectiveNegation = previous is Connective c && c.Type == ConnectiveType.Not;
                 }
                 else
                 {
-                    var previous = symbols[i - 1];
-                    var current = symbols[i];
-                    if (previous is Connective c)
+                    if (i != 1)
                     {
-                        isConnectiveNegation = c.Type == ConnectiveType.Not;
-                        if (!(current is Parenthesis))
-                            throw new Exception("A connective must always be followed by a parenthesis.");
+                        previous = symbols[i - 1];
                     }
-                    if (previous is Predicate)
+                    var current = symbols[i];
+                    if (current is Predicate)
                     {
-                        predicatesInside++;
-                        if (!((current is Parenthesis) || current is Separator))
+                        if (!((previous is Parenthesis p && p.Side == ParenthesisSide.Opening)
+                              || previous is Separator))
                         {
-                            throw new Exception("A predicate must always be followed either by a comma or a parenthesis.");
+                            throw new InvalidInputException(
+                                "A predicate must always be preceded by either an opening parenthesis or a comma.");
+                        }
+                        predicatesInside++;
+                    }
+                    if (current is Connective conn)
+                    {
+                        isConnectiveNegation = conn.Type == ConnectiveType.Not;
+                        if (!((previous is Parenthesis p && p.Side == ParenthesisSide.Opening)
+                              || previous is Separator))
+                        {
+                            throw new InvalidInputException(
+                                "A connective must always be preceded by either an opening parenthesis or a comma.");
                         }
                     }
-                    if (previous is Parenthesis parenthesis)
+                    if (current is Parenthesis paren)
                     {
-                        if (parenthesis.Side == ParenthesisSide.Opening)
+                        if (paren.Side == ParenthesisSide.Opening)
                         {
-                            predicatesInside = 0;
-                            if (!(current is Predicate || current is Connective))
+                            if (!(previous is Connective))
                             {
-                                throw new Exception(
-                                    "An opening parenthesis must always be followed by either a predicate or a connective.");
+                                throw new InvalidInputException(
+                                    "An opening parenthesis must always be preceded by a connective.");
                             }
+                            predicatesInside = 0;
                         }
                         else
                         {
-                            if (!(current is Separator ||
-                                  (current is Parenthesis p && p.Side == ParenthesisSide.Closing)))
+                            if (isConnectiveNegation && predicatesInside > 1)
                             {
-                                throw new Exception(
-                                    "A closing parenthesis must always be followed by either a comma or another closing parenthesis.");
+                                throw new InvalidInputException("A negation must be applied for only one predicate.");
+                            }
+                            if (predicatesInside > 2)
+                            {
+                                throw new InvalidInputException("No connective can have more than two predicates.");
+                            }
+                            if (!((previous is Parenthesis p && p.Side == ParenthesisSide.Closing)
+                                  || previous is Predicate))
+                            {
+                                throw new InvalidInputException(
+                                    "A closing parenthesis must always be preceded by either another closing parenthesis or a predicate.");
                             }
                         }
                     }
-                    if (previous is Separator)
+                    if (current is Separator)
                     {
-                        if (!(current is Predicate || current is Connective))
+                        if (!((previous is Parenthesis p && p.Side == ParenthesisSide.Closing)
+                              || previous is Predicate))
                         {
-                            throw new Exception(
-                                "A comma must always be followed by either a predicate or a connective.");
-                        }
-                        if (isConnectiveNegation && predicatesInside > 1)
-                        {
-                            throw new Exception("A negation must be follow by only one predicate.");
+                            throw new InvalidInputException(
+                                "A comma must always be preceded by either another closing parenthesis or a predicate.");
                         }
                     }
                 }

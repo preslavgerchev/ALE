@@ -49,7 +49,7 @@
             {
                 return new Separator(inputChar);
             }
-            else if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z]"))
+            else if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z0-9]"))
             {
                 return new Predicate(inputChar);
             }
