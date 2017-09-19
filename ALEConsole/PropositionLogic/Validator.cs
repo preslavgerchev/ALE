@@ -21,6 +21,8 @@
                 throw new Exception("Amount of opening and closing parenthesis must match.");
             }
 
+            var isConnectiveNegation = false;
+            var predicatesInside = 0;
             for (var i = 0; i < symbols.Count; i++)
             {
                 if (i == 0)
@@ -39,23 +41,25 @@
                 {
                     var previous = symbols[i - 1];
                     var current = symbols[i];
-                    if (previous is Connective)
+                    if (previous is Connective c)
                     {
+                        isConnectiveNegation = c.Type == ConnectiveType.Not;
                         if (!(current is Parenthesis))
                             throw new Exception("A connective must always be followed by a parenthesis.");
                     }
                     if (previous is Predicate)
                     {
+                        predicatesInside++;
                         if (!((current is Parenthesis) || current is Separator))
                         {
-                            throw new Exception(
-                                "A predicate must always be followed either by a comma or a parenthesis of the previous connective is a negation.");
+                            throw new Exception("A predicate must always be followed either by a comma or a parenthesis.");
                         }
                     }
                     if (previous is Parenthesis parenthesis)
                     {
                         if (parenthesis.Side == ParenthesisSide.Opening)
                         {
+                            predicatesInside = 0;
                             if (!(current is Predicate || current is Connective))
                             {
                                 throw new Exception(
@@ -69,6 +73,10 @@
                             {
                                 throw new Exception(
                                     "A closing parenthesis must always be followed by either a comma or another closing parenthesis.");
+                            }
+                            if (isConnectiveNegation && predicatesInside > 1)
+                            {
+                                throw new Exception("A negation must be follow by only predicate.");
                             }
                         }
                     }

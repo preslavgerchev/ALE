@@ -7,7 +7,7 @@
     {
         static void Main(string[] args)
         {
-            var properOutput = "|(~(D),&(>(A,,),~(C)))";
+            var properOutput = "|(~(D),&(~(A,CB),~(C)))";
             var nodes = TreeCreator.Initialize(properOutput);
             Console.WriteLine();
             Console.ReadLine();
