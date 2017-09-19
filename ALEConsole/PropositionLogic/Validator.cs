@@ -74,17 +74,18 @@
                                 throw new Exception(
                                     "A closing parenthesis must always be followed by either a comma or another closing parenthesis.");
                             }
-                            if (isConnectiveNegation && predicatesInside > 1)
-                            {
-                                throw new Exception("A negation must be follow by only predicate.");
-                            }
                         }
                     }
                     if (previous is Separator)
                     {
                         if (!(current is Predicate || current is Connective))
                         {
-                            throw new Exception("A comma must always be followed by either a predicate or a connective.");
+                            throw new Exception(
+                                "A comma must always be followed by either a predicate or a connective.");
+                        }
+                        if (isConnectiveNegation && predicatesInside > 1)
+                        {
+                            throw new Exception("A negation must be follow by only one predicate.");
                         }
                     }
                 }
