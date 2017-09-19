@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Nodes\Node.cs" />
+    <Compile Include="PropositionLogic\TreeCreator.cs" />
+    <Compile Include="PropositionLogic\Validator.cs" />
     <Compile Include="Symbols\Connective.cs" />
     <Compile Include="Symbols\Parenthesis.cs" />
     <Compile Include="Symbols\ParenthesisSide.cs" />
@@ -50,7 +53,7 @@
     <Compile Include="Symbols\Separator.cs" />
     <Compile Include="Symbols\Symbol.cs" />
     <Compile Include="Symbols\ConnectiveType.cs" />
-    <Compile Include="Parser.cs" />
+    <Compile Include="PropositionLogic\Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
