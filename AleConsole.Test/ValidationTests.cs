@@ -1,5 +1,4 @@
-﻿
-namespace AleConsole.Test
+﻿namespace AleConsole.Test
 {
     using System;
     using System.Collections.Generic;
@@ -32,8 +31,7 @@ namespace AleConsole.Test
 
             foreach (var input in validPropostions)
             {
-                var symbols = Parser.ParseToSymbols(input);
-                Validator.Validate(symbols);
+                TreeCreator.Initialize(input);
             }
         }
 
@@ -48,8 +46,8 @@ namespace AleConsole.Test
                 @">",
                 @"~",
                 @"=",
-               // @"3", TODO PREGER
-              //  @"4", TODO PREGER
+                @"3", 
+                @"4",
                 @"11",
                 @"~(,B)",
                 @">(,B)",
@@ -59,13 +57,12 @@ namespace AleConsole.Test
                 @"~()",
                 @">(,",
                 @",,",
-                // @" " TODO PREGER
+                @" "
             };
 
             foreach (var input in invalidPropositions)
             {
-                var symbols = Parser.ParseToSymbols(input);
-                Throws<InvalidInputException>(() => Validator.Validate(symbols));
+                Throws<InvalidInputException>(() => TreeCreator.Initialize(input));
             }
         }
 
@@ -74,7 +71,8 @@ namespace AleConsole.Test
             try
             {
                 action();
-                throw new AssertFailedException("TODO PREGER");
+                throw new AssertFailedException(
+                    $"The action did not throw expected exception of type {typeof(TException)}");
             }
             catch (Exception ex)
             {

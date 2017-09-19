@@ -15,7 +15,7 @@
         /// 
         /// </summary>
         /// <param name="charSymbol"></param>
-        public Symbol(char charSymbol)
+        protected Symbol(char charSymbol)
         {
             this.CharSymbol = charSymbol;
         }

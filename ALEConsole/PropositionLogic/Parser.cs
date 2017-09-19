@@ -1,9 +1,9 @@
 ﻿namespace ALEConsole.PropositionLogic
 {
-    using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using System.Linq;
+    using Exceptions;
     using Symbols;
 
     public static class Parser
@@ -49,13 +49,13 @@
             {
                 return new Separator(inputChar);
             }
-            else if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z0-9]"))
+            else if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z01]"))
             {
                 return new Predicate(inputChar);
             }
             else
             {
-                throw new Exception($"Invalid input found: {inputChar}");
+                throw new InvalidInputException($"Invalid input found: {inputChar}");
             }
         }
     }

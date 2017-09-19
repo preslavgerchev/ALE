@@ -1,5 +1,4 @@
-﻿
-namespace ALEConsole.PropositionLogic
+﻿namespace ALEConsole.PropositionLogic
 {
     using System.Collections.Generic;
     using Nodes;

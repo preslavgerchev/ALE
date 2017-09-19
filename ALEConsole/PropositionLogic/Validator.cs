@@ -15,6 +15,11 @@
                 .Cast<Parenthesis>()
                 .ToList();
 
+            if (!symbols.Any())
+            {
+                throw new InvalidInputException("Input cannot be empty.");
+            }
+
             if (allParenthesis.Count(x => x.Side == ParenthesisSide.Closing)
                 != allParenthesis.Count(x => x.Side == ParenthesisSide.Opening))
             {
