@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomataLogicEngineering", "AutomataLogicEngineering\AutomataLogicEngineering.csproj", "{854E8D09-EDAE-4006-9EFC-A1666F45A85B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomataLogicEngineering.Test", "AutomataLogicEngineering.Test\AutomataLogicEngineering.Test.csproj", "{A15D7C0F-ED9D-4DE2-A175-D51A4316F966}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{854E8D09-EDAE-4006-9EFC-A1666F45A85B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854E8D09-EDAE-4006-9EFC-A1666F45A85B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854E8D09-EDAE-4006-9EFC-A1666F45A85B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854E8D09-EDAE-4006-9EFC-A1666F45A85B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A15D7C0F-ED9D-4DE2-A175-D51A4316F966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A15D7C0F-ED9D-4DE2-A175-D51A4316F966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A15D7C0F-ED9D-4DE2-A175-D51A4316F966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A15D7C0F-ED9D-4DE2-A175-D51A4316F966}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C7D4A14-33E9-4E76-8CA3-5B42ED09B8F1}
+	EndGlobalSection
+EndGlobal
