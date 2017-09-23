@@ -60,7 +60,7 @@
         /// </summary>
         /// <param name="rootNode">The root node.</param>
         /// <param name="row">The truth table row.</param>
-        public static void AsssignValues(Node rootNode, TruthTableRow row)
+        public static void AssignValues(Node rootNode, TruthTableRow row)
         {
             foreach (var predicate in row.Predicates)
             {
