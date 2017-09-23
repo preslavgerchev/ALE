@@ -25,7 +25,7 @@
                 {
                     this.truthTableView.Rows[index].Cells[i].Value = row.Predicates[i].ValueRepresentation;
                 }
-                TruthTableGenerator.AsssignValues(rootNode, row);
+                TruthTableGenerator.AssignValues(rootNode, row);
                 var finalValue = rootNode.Apply();
                 this.truthTableView.Rows[index].Cells["Result"].Value = finalValue ? '1' : '0';
             }
