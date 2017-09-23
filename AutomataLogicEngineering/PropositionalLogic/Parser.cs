@@ -1,4 +1,6 @@
-﻿namespace AutomataLogicEngineering.PropositionalLogic
+﻿using System;
+
+namespace AutomataLogicEngineering.PropositionalLogic
 {
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
@@ -6,52 +8,65 @@
     using Exceptions;
     using Symbols;
 
+    /// <summary>
+    /// A static class, responsible for parsing a given string input in a list of symbols.
+    /// </summary>
     public static class Parser
     {
+        /// <summary>
+        /// Parses the given string input to a list of <see cref="Symbol"/> instances.
+        /// </summary>
+        /// <param name="input">The string input.</param>
+        /// <returns>A list of <see cref="Symbol"/> instances.</returns>
         public static IList<Symbol> ParseToSymbols(string input)
         {
-            var allChars = input.RemoveWhiteSpaces().ToCharArray();
+            var allChars = new Regex("\\s+").Replace(input, "").ToCharArray();
             return allChars.Select(ToSymbol).ToList();
         }
-        private static string RemoveWhiteSpaces(this string input) => new Regex("\\s+").Replace(input, "");
 
+        /// <summary>
+        /// Parses a given char to its corresponding symbol.
+        /// </summary>
+        /// <param name="inputChar">The char to parse.</param>
+        /// <returns>A symbol that corresponds to the given char.</returns>
         private static Symbol ToSymbol(char inputChar)
         {
             if (inputChar == '(')
             {
-                return new Parenthesis(inputChar, ParenthesisSide.Opening);
+                return new Parenthesis(inputChar, Guid.NewGuid(), ParenthesisSide.Opening);
             }
             else if (inputChar == ')')
             {
-                return new Parenthesis(inputChar, ParenthesisSide.Closing);
+                return new Parenthesis(inputChar, Guid.NewGuid(), ParenthesisSide.Closing);
             }
             else if (inputChar == '~')
             {
-                return new Connective(inputChar, ConnectiveType.Not);
+                return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Not);
             }
             else if (inputChar == '&')
             {
-                return new Connective(inputChar, ConnectiveType.And);
+                return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.And);
             }
             else if (inputChar == '|')
             {
-                return new Connective(inputChar, ConnectiveType.Or);
+                return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Or);
             }
             else if (inputChar == '>')
             {
-                return new Connective(inputChar, ConnectiveType.Implication);
+                return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Implication);
             }
             else if (inputChar == '=')
             {
-                return new Connective(inputChar, ConnectiveType.BiImplication);
+                return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.BiImplication);
             }
             else if (inputChar == ',')
             {
-                return new Separator(inputChar);
+                return new Separator(inputChar, Guid.NewGuid());
             }
-            else if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z01]"))
+            // TODO PREGER extend with also numbers?
+            else if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z]"))
             {
-                return new Predicate(inputChar);
+                return new Predicate(inputChar, Guid.NewGuid());
             }
             else
             {

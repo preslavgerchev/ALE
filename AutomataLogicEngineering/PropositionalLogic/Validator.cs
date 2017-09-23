@@ -5,8 +5,16 @@
     using Exceptions;
     using Symbols;
 
+    /// <summary>
+    /// A static class, responsible for validating the list of symbols provided.
+    /// </summary>
     public static class Validator
     {
+        /// <summary>
+        /// Validates whether the provided <paramref name="symbols"/> of <see cref="Symbol"/> instances
+        /// is valid.
+        /// </summary>
+        /// <param name="symbols">The list of symbols to validate.</param>
         public static void Validate(IList<Symbol> symbols)
         {
             var allParenthesis = symbols

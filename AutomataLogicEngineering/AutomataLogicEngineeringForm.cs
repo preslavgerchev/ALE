@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using AutomataLogicEngineering.Symbols;
-
-namespace AutomataLogicEngineering
+﻿namespace AutomataLogicEngineering
 {
     using System;
     using System.Windows.Forms;
-    using Nodes;
+    using System.Drawing;
+    using Exceptions;
     using PropositionalLogic;
 
     public partial class AutomataLogicEngineeringForm : Form
@@ -19,53 +15,21 @@ namespace AutomataLogicEngineering
 
         private void generateTreeBtn_Click(object sender, EventArgs e)
         {
-            var input = this.inputTextBox.Text;
-            var node = NodeTreeCreator.Initialize(input);
-            var truthTable = TruthTableGenerator.GenerateTruthTable(node);
-            var allPredicates = TruthTableGenerator.GetAllPredicates(node);
-            this.dataGridView1.Rows.Clear();
-            this.dataGridView1.Columns.Clear();
-            this.dataGridView1.Refresh();
-            foreach (var predicate in allPredicates)
-            {
-                this.dataGridView1.Columns.Add(
-                    predicate.Symbol.CharSymbol.ToString(),
-                    predicate.Symbol.CharSymbol.ToString());
-            }
-            this.dataGridView1.Columns.Add("Result", input);
-            for (var index = 0; index < truthTable.Count; index++)
-            {
-                var row = truthTable[index];
-                this.dataGridView1.Rows.Add();
-                for (int i = 0; i < row.Predicates.Count; i++)
-                {
-                    this.dataGridView1.Rows[index].Cells[i].Value = row.Predicates[i].ValueRepresentation;
-                }
-                foreach (var predicate in row.Predicates)
-                {
-                    FindNode(node, predicate);
-                }
-
-                var value = node.Apply();
-                this.dataGridView1.Rows[index].Cells["Result"].Value = value ? '1' : '0';
-            }
         }
 
-        private void FindNode(Node node, Predicate p)
+        private void showTruthTableBtn_Click(object sender, EventArgs e)
         {
-            if (node.Symbol.Id == p.Id)
+            var input = this.inputTextBox.Text;
+            try
             {
-                (node.Symbol as Predicate).Value = p.Value;
+                this.validInputLabel.Text = string.Empty;
+                var rootNode = NodeTreeCreator.Initialize(input);
+                new TruthTableForm(rootNode, input).Show();
             }
-            else
+            catch (InvalidInputException ex)
             {
-                if (node.Children.Any())
-                {
-                    foreach (var child in node.Children)
-                    {
-                        FindNode(child, p);
-                    }
-                }
+                this.validInputLabel.Text = ex.Message;
+                this.validInputLabel.ForeColor = Color.Red;
             }
         }
     }

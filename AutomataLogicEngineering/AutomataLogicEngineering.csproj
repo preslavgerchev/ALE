@@ -53,13 +53,20 @@
     <Compile Include="AutomataLogicEngineeringForm.Designer.cs">
       <DependentUpon>AutomataLogicEngineeringForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TruthTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TruthTableForm.Designer.cs">
+      <DependentUpon>TruthTableForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Nodes\Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropositionalLogic\Parser.cs" />
     <Compile Include="PropositionalLogic\NodeTreeCreator.cs" />
     <Compile Include="PropositionalLogic\TruthTableGenerator.cs" />
-    <Compile Include="PropositionalLogic\TruthTableRow.cs" />
+    <Compile Include="TruthTable\TruthTable.cs" />
+    <Compile Include="TruthTable\TruthTableRow.cs" />
     <Compile Include="PropositionalLogic\Validator.cs" />
     <Compile Include="Symbols\Connective.cs" />
     <Compile Include="Symbols\Parenthesis.cs" />
@@ -80,6 +87,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TruthTableForm.resx">
+      <DependentUpon>TruthTableForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

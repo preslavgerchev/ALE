@@ -4,15 +4,30 @@
     using Nodes;
     using Symbols;
 
+    /// <summary>
+    /// A static class, responsible for creating a tree out of a given string input.
+    /// </summary>
     public static class NodeTreeCreator
     {
+        /// <summary>
+        /// Parses, validates and converts the input into a node tree, returning the 
+        /// root node of the tree.
+        /// </summary>
+        /// <param name="input">The string input.</param>
+        /// <returns>The root node of the tree.</returns>
         public static Node Initialize(string input)
         {
             var symbols = Parser.ParseToSymbols(input);
-            Validator.Validate(symbols);
+            // TODO PREGER refactor validation
+            // Validator.Validate(symbols);
             return NodeTreeCreator.CreateTree(symbols);
         }
 
+        /// <summary>
+        /// Creates a tree, given the parsed input as a list of symbols.
+        /// </summary>
+        /// <param name="input">The list of symbols.</param>
+        /// <returns>The root node of the tree.</returns>
         private static Node CreateTree(IList<Symbol> input)
         {
             Node parentNode = null;
