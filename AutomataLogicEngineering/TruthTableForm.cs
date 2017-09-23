@@ -29,6 +29,8 @@
                 var finalValue = rootNode.Apply();
                 this.truthTableView.Rows[index].Cells["Result"].Value = finalValue ? '1' : '0';
             }
+
+            var sim = truthTable.Simplify();
         }
 
         private void TruthTableForm_FormClosing(object sender, FormClosingEventArgs e)
