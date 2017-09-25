@@ -66,6 +66,7 @@
     <Compile Include="PropositionalLogic\NodeTreeCreator.cs" />
     <Compile Include="PropositionalLogic\TruthTableGenerator.cs" />
     <Compile Include="TruthTable\TruthTable.cs" />
+    <Compile Include="TruthTable\TruthTableCell.cs" />
     <Compile Include="TruthTable\TruthTableRow.cs" />
     <Compile Include="PropositionalLogic\Validator.cs" />
     <Compile Include="Symbols\Connective.cs" />

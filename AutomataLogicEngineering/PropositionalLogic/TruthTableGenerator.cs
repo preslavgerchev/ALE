@@ -25,17 +25,9 @@
             for (var i = 0; i < possibleCombinations; i++)
             {
                 var binaryRepresentation = Convert.ToString(i, 2).PadLeft(allPredicates.Count, '0');
-                var rowList = new List<Predicate>();
-                for (var j = 0; j < binaryRepresentation.Length; j++)
-                {
-                    var currentPredicate = allPredicates[j];
-                    // Make a copy of the predicate such it can be found later on when calculating
-                    // the outcome of the input.
-                    rowList.Add(new Predicate(
-                        currentPredicate.CharSymbol,
-                        currentPredicate.Id,
-                        binaryRepresentation[j] == '1'));
-                }
+                var rowList = binaryRepresentation
+                    .Select((t, j) => new TruthTableCell(t == '1' ? '1' : '0', allPredicates[j].Id))
+                    .ToList();
                 rows.Add(new TruthTableRow(rowList));
             }
 
@@ -62,9 +54,9 @@
         /// <param name="row">The truth table row.</param>
         public static void AssignValues(Node rootNode, TruthTableRow row)
         {
-            foreach (var predicate in row.Predicates)
+            foreach (var cell in row.Cells)
             {
-                AssignValueToNode(rootNode, predicate);
+                AssignValueToNode(rootNode, cell);
             }
         }
 
@@ -89,16 +81,16 @@
         }
 
         /// <summary>
-        /// Assigns the given <paramref name="predicate"/>'s value to the predicate it matches
+        /// Assigns the given <paramref name="cell"/>'s value to the predicate it matches
         /// in the provided node and its children.
         /// </summary>
         /// <param name="node">The node to whose predicate the value will be assigned to.</param>
-        /// <param name="predicate">The predicate the value of which should be assigned.</param>
-        private static void AssignValueToNode(Node node, Predicate predicate)
+        /// <param name="cell">The cell the value of which should be assigned.</param>
+        private static void AssignValueToNode(Node node, TruthTableCell cell)
         {
-            if (node.Symbol.Id == predicate.Id && node.Symbol is Predicate pred)
+            if (node.Symbol.Id == cell.Id && node.Symbol is Predicate pred)
             {
-                pred.Value = predicate.Value;
+                pred.Value = cell.SymbolInCell == '1';
             }
             else
             {
@@ -107,7 +99,7 @@
 
                 foreach (var child in node.Children)
                 {
-                    AssignValueToNode(child, predicate);
+                    AssignValueToNode(child, cell);
                 }
             }
         }
