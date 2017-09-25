@@ -1,6 +1,5 @@
 ﻿namespace AutomataLogicEngineering
 {
-    using System.Linq;
     using System.Windows.Forms;
     using Nodes;
     using PropositionalLogic;
@@ -31,7 +30,7 @@
                 TruthTableGenerator.AssignValues(rootNode, row);
                 var finalValue = rootNode.Apply();
                 row.Result = finalValue;
-                this.truthTableView.Rows[index].Cells["Result"].Value = finalValue ? '1' : '0';
+                this.truthTableView.Rows[index].Cells["Result"].Value = row.Result ? '1' : '0';
             }
 
             var simplifiedTable = truthTable.Simplify();
@@ -39,7 +38,7 @@
             {
                 simplifiedTable = simplifiedTable.Simplify();
             }
-            
+
             for (var index = 0; index < simplifiedTable.Rows.Count; index++)
             {
                 var row = simplifiedTable.Rows[index];
@@ -47,8 +46,8 @@
                 for (var i = 0; i < row.Cells.Count; i++)
                 {
                     this.simplifiedTruthTableView.Rows[index].Cells[i].Value = row.Cells[i].SymbolInCell;
-                    this.simplifiedTruthTableView.Rows[index].Cells["Result"].Value = row.Result ? '1' : '0';
                 }
+                this.simplifiedTruthTableView.Rows[index].Cells["Result"].Value = row.Result ? '1' : '0';
             }
         }
 
