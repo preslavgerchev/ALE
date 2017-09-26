@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace AutomataLogicEngineering.PropositionalLogic
+﻿namespace AutomataLogicEngineering.PropositionalLogic
 {
+    using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using System.Linq;

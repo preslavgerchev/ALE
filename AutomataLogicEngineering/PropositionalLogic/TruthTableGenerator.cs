@@ -47,20 +47,6 @@
         }
 
         /// <summary>
-        /// Assigns the values from the predicates of given truth table row to the root node and
-        /// its children.
-        /// </summary>
-        /// <param name="rootNode">The root node.</param>
-        /// <param name="row">The truth table row.</param>
-        public static void AssignValues(Node rootNode, TruthTableRow row)
-        {
-            foreach (var cell in row.Cells)
-            {
-                AssignValueToNode(rootNode, cell);
-            }
-        }
-
-        /// <summary>
         /// If the <paramref name="node"/>'s symbol is a predicate then it will be added to the 
         /// <paramref name="predicates"/> list.
         /// </summary>
@@ -77,30 +63,6 @@
             foreach (var child in node.Children)
             {
                 FindAndAddPredicates(child, predicates);
-            }
-        }
-
-        /// <summary>
-        /// Assigns the given <paramref name="cell"/>'s value to the predicate it matches
-        /// in the provided node and its children.
-        /// </summary>
-        /// <param name="node">The node to whose predicate the value will be assigned to.</param>
-        /// <param name="cell">The cell the value of which should be assigned.</param>
-        private static void AssignValueToNode(Node node, TruthTableCell cell)
-        {
-            if (node.Symbol.Id == cell.Id && node.Symbol is Predicate pred)
-            {
-                pred.Value = cell.SymbolInCell == '1';
-            }
-            else
-            {
-                if (!node.Children.Any())
-                    return;
-
-                foreach (var child in node.Children)
-                {
-                    AssignValueToNode(child, cell);
-                }
             }
         }
     }

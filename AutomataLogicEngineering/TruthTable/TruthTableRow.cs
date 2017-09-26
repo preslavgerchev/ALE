@@ -19,6 +19,12 @@
         public bool Result { get; set; }
 
         /// <summary>
+        /// Gets the integer representation of <see cref="Result"/>.
+        /// 1 if <see cref="Result"/> is true; otherwise - 0.
+        /// </summary>
+        public int ResultRepresentation => this.Result ? 1 : 0;
+
+        /// <summary>
         /// Indicates whether a row can be skipped when the truth table is being displayed.
         /// </summary>
         public bool CanBeSkipped { get; set; }
