@@ -41,7 +41,6 @@
             // truthTableView
             // 
             this.truthTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.truthTableView.Enabled = false;
             this.truthTableView.Location = new System.Drawing.Point(11, 29);
             this.truthTableView.Margin = new System.Windows.Forms.Padding(2);
             this.truthTableView.Name = "truthTableView";
@@ -52,7 +51,6 @@
             // simplifiedTruthTableView
             // 
             this.simplifiedTruthTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.simplifiedTruthTableView.Enabled = false;
             this.simplifiedTruthTableView.Location = new System.Drawing.Point(11, 332);
             this.simplifiedTruthTableView.Margin = new System.Windows.Forms.Padding(2);
             this.simplifiedTruthTableView.Name = "simplifiedTruthTableView";

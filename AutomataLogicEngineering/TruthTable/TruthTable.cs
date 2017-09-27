@@ -17,11 +17,6 @@
         public List<TruthTableRow> Rows { get; }
 
         /// <summary>
-        /// Gets a value indicating whether the truth table can be simplified.
-        /// </summary>
-        public bool CanBeSimplified => this.Rows.Count > this.Simplify().Rows.Count;
-
-        /// <summary>
         /// Gets the hexadecimal representation of the result.
         /// </summary>
         public string HexadecimalResult =>
@@ -40,11 +35,28 @@
             this.Rows = rows;
         }
 
+        public TruthTable Simplify()
+        {
+            var simplifiedTable = this.SimplifyTable();
+            while (simplifiedTable.CanBeSimplified())
+            {
+                simplifiedTable = simplifiedTable.SimplifyTable();
+            }
+
+            return simplifiedTable;
+        }
+
+        /// <summary>
+        /// Returns a value indicating whether the truth table can be simplified.
+        /// </summary>
+        /// <returns>True if the table can be simplified; otherwise - false.</returns>
+        private bool CanBeSimplified() => this.Rows.Count > this.SimplifyTable().Rows.Count;
+
         /// <summary>
         /// Simplifies the given truth table and returns a new truth table.
         /// </summary>
         /// <returns>The new, simplified truth table.</returns>
-        public TruthTable Simplify()
+        private TruthTable SimplifyTable()
         {
             var newRows = new List<TruthTableRow>();
             for (var i = 0; i < this.Rows.Count; i++)

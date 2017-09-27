@@ -21,7 +21,7 @@
         {
             var rows = new List<TruthTableRow>();
             var allPredicates = GetAllPredicates(node);
-            var possibleCombinations = Math.Pow(2, allPredicates.Count);
+            var possibleCombinations = 1 << allPredicates.Count;
             for (var i = 0; i < possibleCombinations; i++)
             {
                 var binaryRepresentation = Convert.ToString(i, 2).PadLeft(allPredicates.Count, '0');
@@ -43,7 +43,15 @@
         {
             var predicatesList = new List<Predicate>();
             FindAndAddPredicates(node, predicatesList);
-            return predicatesList;
+            var distinctPredicates = new List<Predicate>();
+            foreach (var pred in predicatesList)
+            {
+                if (distinctPredicates.All(x => x.CharSymbol != pred.CharSymbol))
+                {
+                    distinctPredicates.Add(pred);
+                }
+            }
+            return distinctPredicates;
         }
 
         /// <summary>

@@ -37,10 +37,6 @@
             }
 
             var simplifiedTable = truthTable.Simplify();
-            while (simplifiedTable.CanBeSimplified)
-            {
-                simplifiedTable = simplifiedTable.Simplify();
-            }
 
             for (var i = 0; i < simplifiedTable.Rows.Count; i++)
             {

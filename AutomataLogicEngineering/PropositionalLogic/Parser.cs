@@ -13,13 +13,19 @@
     public static class Parser
     {
         /// <summary>
+        /// A dictionary that stores the used identifiers for all predicates. If a duplicate predicate
+        /// is found in the input then the same identifier can be reused and assiggned to the predicate.
+        /// </summary>
+        private static readonly IDictionary<char, Guid> IdDictionary = new Dictionary<char, Guid>();
+
+        /// <summary>
         /// Parses the given string input to a list of <see cref="Symbol"/> instances.
         /// </summary>
         /// <param name="input">The string input.</param>
         /// <returns>A list of <see cref="Symbol"/> instances.</returns>
         public static IList<Symbol> ParseToSymbols(string input)
         {
-            var allChars = new Regex("\\s+").Replace(input, "").ToCharArray();
+            var allChars = new Regex("\\s+").Replace(input, string.Empty).ToCharArray();
             return allChars.Select(ToSymbol).ToList();
         }
 
@@ -30,46 +36,38 @@
         /// <returns>A symbol that corresponds to the given char.</returns>
         private static Symbol ToSymbol(char inputChar)
         {
-            if (inputChar == '(')
+            switch (inputChar)
             {
-                return new Parenthesis(inputChar, Guid.NewGuid(), ParenthesisSide.Opening);
-            }
-            else if (inputChar == ')')
-            {
-                return new Parenthesis(inputChar, Guid.NewGuid(), ParenthesisSide.Closing);
-            }
-            else if (inputChar == '~')
-            {
-                return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Not);
-            }
-            else if (inputChar == '&')
-            {
-                return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.And);
-            }
-            else if (inputChar == '|')
-            {
-                return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Or);
-            }
-            else if (inputChar == '>')
-            {
-                return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Implication);
-            }
-            else if (inputChar == '=')
-            {
-                return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.BiImplication);
-            }
-            else if (inputChar == ',')
-            {
-                return new Separator(inputChar, Guid.NewGuid());
-            }
-            // TODO PREGER extend with also numbers?
-            else if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z]"))
-            {
-                return new Predicate(inputChar, Guid.NewGuid());
-            }
-            else
-            {
-                throw new InvalidInputException($"Invalid input found: {inputChar}");
+                case '(':
+                    return new Parenthesis(inputChar, Guid.NewGuid(), ParenthesisSide.Opening);
+                case ')':
+                    return new Parenthesis(inputChar, Guid.NewGuid(), ParenthesisSide.Closing);
+                case '~':
+                    return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Not);
+                case '&':
+                    return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.And);
+                case '|':
+                    return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Or);
+                case '>':
+                    return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Implication);
+                case '=':
+                    return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.BiImplication);
+                case ',':
+                    return new Separator(inputChar, Guid.NewGuid());
+                default:
+                    if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z]"))
+                    {
+                        if (!IdDictionary.TryGetValue(inputChar, out var guid))
+                        {
+                            guid = Guid.NewGuid();
+                            IdDictionary.Add(inputChar, guid);
+                        }
+                        return new Predicate(inputChar, guid);
+                    }
+                    else
+                    {
+                        throw new InvalidInputException($"Invalid input found: {inputChar}");
+                    }
             }
         }
     }
