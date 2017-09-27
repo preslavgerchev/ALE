@@ -59,7 +59,7 @@
                 throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
             }
 
-            var symbolConn = this.Symbol as Connective;
+            var symbolConn = (Connective)this.Symbol;
 
             // In case all children of the connective are predicates this means we do not have to go
             // further recursively and we can directly calculate the value of the children.
@@ -88,7 +88,8 @@
 
             // Else we have two 1 or two connectives as children. Call Apply(..) recursively for all the children.
             return this.Apply(
-                this.Children[0].Apply(), symbolConn.Type != ConnectiveType.Not && this.Children[1].Apply());
+                this.Children[0].Apply(),
+                symbolConn.Type != ConnectiveType.Not && this.Children[1].Apply());
         }
 
         /// <summary>
@@ -106,7 +107,7 @@
                 throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
             }
 
-            var symbolConn = (Connective) this.Symbol;
+            var symbolConn = (Connective)this.Symbol;
             switch (symbolConn.Type)
             {
                 case ConnectiveType.And:

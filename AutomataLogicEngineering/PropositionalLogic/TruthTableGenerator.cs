@@ -43,15 +43,7 @@
         {
             var predicatesList = new List<Predicate>();
             FindAndAddPredicates(node, predicatesList);
-            var distinctPredicates = new List<Predicate>();
-            foreach (var pred in predicatesList)
-            {
-                if (distinctPredicates.All(x => x.CharSymbol != pred.CharSymbol))
-                {
-                    distinctPredicates.Add(pred);
-                }
-            }
-            return distinctPredicates;
+            return predicatesList;
         }
 
         /// <summary>
@@ -62,7 +54,7 @@
         /// <param name="predicates">The list to add the predicate to.</param>
         private static void FindAndAddPredicates(Node node, List<Predicate> predicates)
         {
-            if (node.Symbol is Predicate pred)
+            if (node.Symbol is Predicate pred && predicates.All(x => x.CharSymbol != pred.CharSymbol))
                 predicates.Add(pred);
 
             if (!node.Children.Any())
