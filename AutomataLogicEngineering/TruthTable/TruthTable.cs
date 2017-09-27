@@ -35,6 +35,10 @@
             this.Rows = rows;
         }
 
+        /// <summary>
+        /// Simplifies the given truth table and returns a new truth table.
+        /// </summary>
+        /// <returns>The new, simplified truth table.</returns>
         public TruthTable Simplify()
         {
             var simplifiedTable = this.SimplifyTable();
