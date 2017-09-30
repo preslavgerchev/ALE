@@ -53,6 +53,7 @@
     <Compile Include="AutomataLogicEngineeringForm.Designer.cs">
       <DependentUpon>AutomataLogicEngineeringForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PropositionalLogic\NodeGraphCreator.cs" />
     <Compile Include="TruthTableForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,7 +1,5 @@
 ﻿namespace AutomataLogicEngineering.Symbols
 {
-    using System;
-
     /// <summary>
     /// A class, that represents a predicate, usually represented by a single letter.
     /// </summary>
@@ -24,7 +22,7 @@
         /// <param name="charSymbol">The char symbol.</param>
         /// <param name="id">The unique identifier of the symbol.</param>
         /// <param name="value">The value of the predicate.</param>
-        public Predicate(char charSymbol, Guid id, bool value = false)
+        public Predicate(char charSymbol, int id, bool value = false)
             : base(charSymbol, id)
         {
             this.Value = value;

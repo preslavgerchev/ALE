@@ -1,6 +1,5 @@
 ﻿namespace AutomataLogicEngineering.PropositionalLogic
 {
-    using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using System.Linq;
@@ -13,10 +12,15 @@
     public static class Parser
     {
         /// <summary>
+        /// Gets the next unique identifier that can be assigned to a symbol.
+        /// </summary>
+        private static int symbolId = 0;
+
+        /// <summary>
         /// A dictionary that stores the used identifiers for all predicates. If a duplicate predicate
         /// is found in the input then the same identifier can be reused and assiggned to the predicate.
         /// </summary>
-        private static readonly IDictionary<char, Guid> IdDictionary = new Dictionary<char, Guid>();
+        private static readonly IDictionary<char, int> IdDictionary = new Dictionary<char, int>();
 
         /// <summary>
         /// Parses the given string input to a list of <see cref="Symbol"/> instances.
@@ -30,6 +34,12 @@
         }
 
         /// <summary>
+        /// Gets the next unique identifier that can be used to identify a symbol.
+        /// </summary>
+        /// <returns>An unique identifier.</returns>
+        private static int GetNextSymbolId() => symbolId++;
+
+        /// <summary>
         /// Parses a given char to its corresponding symbol.
         /// </summary>
         /// <param name="inputChar">The char to parse.</param>
@@ -39,34 +49,34 @@
             switch (inputChar)
             {
                 case '(':
-                    return new Parenthesis(inputChar, Guid.NewGuid(), ParenthesisSide.Opening);
+                    return new Parenthesis(inputChar, GetNextSymbolId(), ParenthesisSide.Opening);
                 case ')':
-                    return new Parenthesis(inputChar, Guid.NewGuid(), ParenthesisSide.Closing);
+                    return new Parenthesis(inputChar, GetNextSymbolId(), ParenthesisSide.Closing);
                 case '~':
-                    return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Not);
+                    return new Connective(inputChar, GetNextSymbolId(), ConnectiveType.Not);
                 case '&':
-                    return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.And);
+                    return new Connective(inputChar, GetNextSymbolId(), ConnectiveType.And);
                 case '|':
-                    return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Or);
+                    return new Connective(inputChar, GetNextSymbolId(), ConnectiveType.Or);
                 case '>':
-                    return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.Implication);
+                    return new Connective(inputChar, GetNextSymbolId(), ConnectiveType.Implication);
                 case '=':
-                    return new Connective(inputChar, Guid.NewGuid(), ConnectiveType.BiImplication);
+                    return new Connective(inputChar, GetNextSymbolId(), ConnectiveType.BiImplication);
                 case ',':
-                    return new Separator(inputChar, Guid.NewGuid());
+                    return new Separator(inputChar, GetNextSymbolId());
                 default:
                     if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z]"))
                     {
-                        if (!IdDictionary.TryGetValue(inputChar, out var guid))
+                        if (!IdDictionary.TryGetValue(inputChar, out var id))
                         {
-                            guid = Guid.NewGuid();
-                            IdDictionary.Add(inputChar, guid);
+                            id = GetNextSymbolId();
+                            IdDictionary.Add(inputChar, id);
                         }
-                        return new Predicate(inputChar, guid);
+                        return new Predicate(inputChar, id);
                     }
                     else
                     {
-                        throw new InvalidInputException($"Invalid input found: {inputChar}");
+                        throw new InvalidInputException($"Invalid input found: '{inputChar}'.");
                     }
             }
         }

@@ -50,6 +50,7 @@
             }
 
             this.hexadecimalLbl.Text = truthTable.HexadecimalResult;
+            NodeGraphCreator.CreateNodeTreeImage(rootNode);
         }
 
         private void TruthTableForm_FormClosing(object sender, FormClosingEventArgs e)

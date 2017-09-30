@@ -9,7 +9,7 @@
     /// A single node, representing a node in the node tree. The node may contain children 
     /// and may have a parent.
     /// </summary>
-    public class Node
+    public sealed class Node
     {
         /// <summary>
         /// Gets the symbol of the node.

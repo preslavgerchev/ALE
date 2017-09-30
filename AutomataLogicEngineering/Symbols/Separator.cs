@@ -1,7 +1,5 @@
 ﻿namespace AutomataLogicEngineering.Symbols
 {
-    using System;
-
     /// <summary>
     /// A class, that represents a separator (a comma).
     /// </summary>
@@ -12,7 +10,7 @@
         /// </summary>
         /// <param name="charSymbol">The char symbol.</param>
         /// <param name="id">The unique identifier of the symbol.</param>
-        public Separator(char charSymbol, Guid id)
+        public Separator(char charSymbol, int id)
             : base(charSymbol, id)
         {
         }

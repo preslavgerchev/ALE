@@ -1,7 +1,5 @@
 ﻿namespace AutomataLogicEngineering.TruthTable
 {
-    using System;
-
     /// <summary>
     /// Represents a single truth table cell in a truth table row.
     /// </summary>
@@ -16,14 +14,14 @@
         /// Gets the unique identifier that can be used to identify a predicate such that a value
         /// can be assigned.
         /// </summary>
-        public Guid Id { get; }
+        public int Id { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TruthTableCell"/> class.
         /// </summary>
         /// <param name="symbolInCell">The symbol in the truth table cell.</param>
         /// <param name="id">The unique identifier.</param>
-        public TruthTableCell(char symbolInCell, Guid id)
+        public TruthTableCell(char symbolInCell, int id)
         {
             this.SymbolInCell = symbolInCell;
             this.Id = id;

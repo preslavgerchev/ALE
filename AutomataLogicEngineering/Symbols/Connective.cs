@@ -1,7 +1,5 @@
 ﻿namespace AutomataLogicEngineering.Symbols
 {
-    using System;
-
     /// <summary>
     /// A class, that represents a single connective.
     /// </summary>
@@ -18,7 +16,7 @@
         /// <param name="charSymbol">The char symbol.</param>
         /// <param name="id">The unique identifier of the symbol.</param>
         /// <param name="type">The connective type.</param>
-        public Connective(char charSymbol, Guid id, ConnectiveType type)
+        public Connective(char charSymbol, int id, ConnectiveType type)
             : base(charSymbol, id)
         {
             this.Type = type;
