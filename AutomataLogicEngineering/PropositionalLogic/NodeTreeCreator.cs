@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace AutomataLogicEngineering.PropositionalLogic
+﻿namespace AutomataLogicEngineering.PropositionalLogic
 {
     using System.Collections.Generic;
     using Nodes;
@@ -62,9 +60,12 @@ namespace AutomataLogicEngineering.PropositionalLogic
                 }
                 else if (symbol is Parenthesis parenthesis)
                 {
-                    if (parenthesis.Side == ParenthesisSide.Closing && parentNode?.Parent != null)
+                    if (parenthesis.Side == ParenthesisSide.Closing)
                     {
-                        parentNode = parentNode?.Parent;
+                        if (parentNode?.Parent != null)
+                        {
+                            parentNode = parentNode?.Parent;
+                        }
                     }
                 }
             }
