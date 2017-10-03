@@ -47,17 +47,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\InvalidInputException.cs" />
-    <Compile Include="AutomataLogicEngineeringForm.cs">
+    <Compile Include="UI\AutomataLogicEngineeringForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AutomataLogicEngineeringForm.Designer.cs">
+    <Compile Include="UI\AutomataLogicEngineeringForm.Designer.cs">
       <DependentUpon>AutomataLogicEngineeringForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PropositionalLogic\NodeGraphCreator.cs" />
-    <Compile Include="TruthTableForm.cs">
+    <Compile Include="UI\HexTreeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TruthTableForm.Designer.cs">
+    <Compile Include="UI\HexTreeForm.Designer.cs">
+      <DependentUpon>HexTreeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TruthTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TruthTableForm.Designer.cs">
       <DependentUpon>TruthTableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Nodes\Node.cs" />
@@ -77,7 +83,7 @@
     <Compile Include="Symbols\Separator.cs" />
     <Compile Include="Symbols\Symbol.cs" />
     <Compile Include="Symbols\ConnectiveType.cs" />
-    <EmbeddedResource Include="AutomataLogicEngineeringForm.resx">
+    <EmbeddedResource Include="UI\AutomataLogicEngineeringForm.resx">
       <DependentUpon>AutomataLogicEngineeringForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -89,7 +95,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TruthTableForm.resx">
+    <EmbeddedResource Include="UI\HexTreeForm.resx">
+      <DependentUpon>HexTreeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TruthTableForm.resx">
       <DependentUpon>TruthTableForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

@@ -1,4 +1,4 @@
-﻿namespace AutomataLogicEngineering
+﻿namespace AutomataLogicEngineering.UI
 {
     using System;
     using System.Windows.Forms;

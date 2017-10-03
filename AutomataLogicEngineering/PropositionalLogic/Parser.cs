@@ -65,6 +65,7 @@
                 case ',':
                     return new Separator(inputChar, GetNextSymbolId());
                 default:
+                    // TODO PREGER for drawing node unique ids is needed. one Id and one Guid?
                     if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z]"))
                     {
                         if (!IdDictionary.TryGetValue(inputChar, out var id))

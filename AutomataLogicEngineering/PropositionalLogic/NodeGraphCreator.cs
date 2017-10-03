@@ -1,5 +1,6 @@
 ﻿namespace AutomataLogicEngineering.PropositionalLogic
 {
+    using System;
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
@@ -28,8 +29,7 @@
         public static string CreateNodeGraphImage(Node rootNode)
         {
             PrepareDotFile(rootNode);
-            CreateNodeGraph();
-            return ImageFileName;
+            return CreateNodeGraph();
         }
 
         /// <summary>
@@ -50,20 +50,21 @@
 
         /// <summary>
         /// Creates the node graph image with file name of <see cref="ImageFileName"/>, using the .dot file with file name 
-        /// of <see cref="DotFileName"/>.
+        /// of <see cref="DotFileName"/> and returns the full path of where the image is located.
         /// </summary>
-        private static void CreateNodeGraph()
+        /// <returns></returns>
+        private static string CreateNodeGraph()
         {
-            var process = new Process
+            var relativeFolderPath = Path.GetFullPath(
+                new Uri(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\")).LocalPath);
+            var startInfo = new ProcessStartInfo
             {
-                StartInfo =
-                {
-                    FileName = @"C:\Program Files (x86)\Graphviz2.38\bin",
-                    Arguments = $"-Tpng -o{ImageFileName} {DotFileName}",
-                    UseShellExecute = true
-                },
+                WorkingDirectory = relativeFolderPath,
+                FileName = "dot.exe",
+                Arguments = $"-Tpng -o{ImageFileName} {DotFileName}"
             };
-            process.Start();
+            Process.Start(startInfo)?.WaitForExit();
+            return relativeFolderPath + ImageFileName;
         }
 
         /// <summary>

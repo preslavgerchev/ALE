@@ -1,4 +1,4 @@
-﻿namespace AutomataLogicEngineering
+﻿namespace AutomataLogicEngineering.UI
 {
     partial class AutomataLogicEngineeringForm
     {

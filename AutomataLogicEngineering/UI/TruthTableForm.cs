@@ -1,9 +1,9 @@
-﻿namespace AutomataLogicEngineering
+﻿namespace AutomataLogicEngineering.UI
 {
     using System.Windows.Forms;
     using Nodes;
     using PropositionalLogic;
-    
+
     public partial class TruthTableForm : Form
     {
         public TruthTableForm(Node rootNode, string input)
@@ -50,7 +50,8 @@
             }
 
             this.hexadecimalLbl.Text = truthTable.HexadecimalResult;
-            NodeGraphCreator.CreateNodeGraphImage(rootNode);
+            var imagePath = NodeGraphCreator.CreateNodeGraphImage(rootNode);
+            new HexTreeForm(imagePath).Show();
         }
 
         private void TruthTableForm_FormClosing(object sender, FormClosingEventArgs e)
