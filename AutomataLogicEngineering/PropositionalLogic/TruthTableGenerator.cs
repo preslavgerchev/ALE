@@ -26,7 +26,7 @@
             {
                 var binaryRepresentation = Convert.ToString(i, 2).PadLeft(allPredicates.Count, '0');
                 var rowList = binaryRepresentation
-                    .Select((t, j) => new TruthTableCell(t == '1' ? '1' : '0', allPredicates[j].Id))
+                    .Select((c, j) => new TruthTableCell(c == '1' ? '1' : '0', allPredicates[j].Id))
                     .ToList();
                 rows.Add(new TruthTableRow(rowList));
             }

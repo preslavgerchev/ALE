@@ -82,8 +82,13 @@
             {
                 var predicate = this.Children.Single(x => x.Symbol is Predicate).Symbol as Predicate;
                 var connective = this.Children.Single(x => x.Symbol is Connective);
+                var connectiveIndex = this.Children.IndexOf(connective);
 
-                return this.Apply(predicate.Value, connective.Apply());
+                // If the connective is an implication (>) then it matters which value is passed first. As such we determine
+                // the connective index and if first then we pass the connective first.
+                return connectiveIndex == 0
+                    ? this.Apply(connective.Apply(), predicate.Value)
+                    : this.Apply(predicate.Value, connective.Apply());
             }
 
             // Else we have two 1 or two connectives as children. Call Apply(..) recursively for all the children.
@@ -97,7 +102,7 @@
         /// </summary>
         /// <param name="firstValue">The first value.</param>
         /// <param name="secondValue">The second value. Has default value since the 
-        /// connective type may be a NOT in which case only one value is needed.</param>
+        /// connective type may be a NOT (~) in which case only one value is needed.</param>
         /// <returns>The result of the connective, applied to the provided values.</returns>
         private bool Apply(bool firstValue, bool secondValue = false)
         {

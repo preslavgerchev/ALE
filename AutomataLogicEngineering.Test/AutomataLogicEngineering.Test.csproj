@@ -54,7 +54,8 @@
     <Compile Include="HexadecimalTests\HexadecimalTests.cs" />
     <Compile Include="HexadecimalTests\HexCollection.cs" />
     <Compile Include="HexadecimalTests\HexPair.cs" />
-    <Compile Include="PropositionalLogicTests.cs" />
+    <Compile Include="NodeTreeCreatorTests.cs" />
+    <Compile Include="ValidationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestExtensions.cs" />
   </ItemGroup>

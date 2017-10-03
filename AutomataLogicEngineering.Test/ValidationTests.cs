@@ -5,9 +5,16 @@
     using Exceptions;
     using PropositionalLogic;
 
+    /// <summary>
+    /// A test class for <see cref="Validator"/>.
+    /// </summary>
     [TestClass]
-    public class PropositionalLogicTests
+    public class ValidationTests
     {
+        /// <summary>
+        /// A test method, verifying that the given valid propositions will not thrown
+        /// an exception and will be properly parsed.
+        /// </summary>
         [TestMethod]
         [Ignore]
         public void ValidPropositions_Test()
@@ -33,6 +40,10 @@
             }
         }
 
+        /// <summary>
+        /// A test method, verifying that the given valid propositions will throw an
+        /// <see cref="InvalidInputException"/>.
+        /// </summary>
         [TestMethod]
         [Ignore]
         public void InvalidPropositions_Test()

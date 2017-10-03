@@ -51,6 +51,20 @@
         }
 
         /// <summary>
+        /// Calculates the result for each row given the node tree, represented by the
+        /// <paramref name="rootNode"/>.
+        /// </summary>
+        /// <param name="rootNode">The root node of the node tree.</param>
+        public void Calculate(Node rootNode)
+        {
+            foreach (var row in this.Rows)
+            {
+                this.AssignValues(rootNode, row);
+                row.Result = rootNode.Apply();
+            }
+        }
+
+        /// <summary>
         /// Returns a value indicating whether the truth table can be simplified.
         /// </summary>
         /// <returns>True if the table can be simplified; otherwise - false.</returns>
@@ -84,20 +98,6 @@
                 }
             }
             return new TruthTable(filteredRows);
-        }
-
-        /// <summary>
-        /// Calculates the result for each row given the node tree, represented by the
-        /// <paramref name="rootNode"/>.
-        /// </summary>
-        /// <param name="rootNode">The root node of the node tree.</param>
-        public void Calculate(Node rootNode)
-        {
-            foreach (var row in this.Rows)
-            {
-                this.AssignValues(rootNode, row);
-                row.Result = rootNode.Apply();
-            }
         }
 
         /// <summary>

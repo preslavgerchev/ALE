@@ -1,4 +1,6 @@
-﻿namespace AutomataLogicEngineering.PropositionalLogic
+﻿using System.Linq;
+
+namespace AutomataLogicEngineering.PropositionalLogic
 {
     using System.Collections.Generic;
     using Nodes;
@@ -41,7 +43,7 @@
                     }
                     else
                     {
-                        Node node = new Node(symbol);
+                        var node = new Node(symbol);
                         parentNode.AddChild(node);
                         parentNode = node;
                     }
@@ -54,16 +56,15 @@
                     }
                     else
                     {
-                        Node node = new Node(symbol);
+                        var node = new Node(symbol);
                         parentNode.AddChild(node);
                     }
                 }
                 else if (symbol is Parenthesis parenthesis)
                 {
-                    if (parenthesis.Side == ParenthesisSide.Closing)
+                    if (parenthesis.Side == ParenthesisSide.Closing && parentNode?.Parent != null)
                     {
-                        if (parentNode?.Parent != null)
-                            parentNode = parentNode?.Parent;
+                        parentNode = parentNode?.Parent;
                     }
                 }
             }
