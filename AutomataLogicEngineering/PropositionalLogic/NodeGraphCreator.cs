@@ -75,13 +75,13 @@
         /// <param name="node">The node.</param>
         private static void WriteNodes(TextWriter writer, Node node)
         {
-            writer.WriteLine($"node{node.Symbol.Id} [label = \"{node.Symbol.CharSymbol}\"]");
+            writer.WriteLine($"node{node.Symbol.NodeGraphId} [label = \"{node.Symbol.CharSymbol}\"]");
 
             if (!node.Children.Any()) return;
 
             foreach (var child in node.Children)
             {
-                writer.WriteLine($"node{node.Symbol.Id} -- node{child.Symbol.Id}");
+                writer.WriteLine($"node{node.Symbol.NodeGraphId} -- node{child.Symbol.NodeGraphId}");
                 WriteNodes(writer, child);
             }
         }

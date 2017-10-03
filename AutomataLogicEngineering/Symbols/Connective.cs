@@ -15,9 +15,10 @@
         /// </summary>
         /// <param name="charSymbol">The char symbol.</param>
         /// <param name="id">The unique identifier of the symbol.</param>
+        /// <param name="nodeGraphId">The node graph identifier of the symbol.</param>
         /// <param name="type">The connective type.</param>
-        public Connective(char charSymbol, int id, ConnectiveType type)
-            : base(charSymbol, id)
+        public Connective(char charSymbol, int id, int nodeGraphId, ConnectiveType type)
+            : base(charSymbol, id, nodeGraphId)
         {
             this.Type = type;
         }

@@ -12,9 +12,10 @@
         /// </summary>
         /// <param name="charSymbol">The char symbol.</param>
         /// <param name="id">The unique identifier of the symbol.</param>
+        /// <param name="nodeGraphId">The node graph identifier of the symbol.</param>
         /// <param name="side">The parenthesis side.</param>
-        public Parenthesis(char charSymbol, int id, ParenthesisSide side)
-            : base(charSymbol, id)
+        public Parenthesis(char charSymbol, int id, int nodeGraphId, ParenthesisSide side)
+            : base(charSymbol, id, nodeGraphId)
         {
             this.Side = side;
         }

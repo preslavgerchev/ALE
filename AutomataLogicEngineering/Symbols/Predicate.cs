@@ -21,9 +21,10 @@
         /// </summary>
         /// <param name="charSymbol">The char symbol.</param>
         /// <param name="id">The unique identifier of the symbol.</param>
+        /// <param name="nodeGraphId">The node graph identifier of the symbol.</param>
         /// <param name="value">The value of the predicate.</param>
-        public Predicate(char charSymbol, int id, bool value = false)
-            : base(charSymbol, id)
+        public Predicate(char charSymbol, int id, int nodeGraphId, bool value = false)
+            : base(charSymbol, id, nodeGraphId)
         {
             this.Value = value;
         }

@@ -34,9 +34,9 @@
             // 
             // hexTreePictureBox
             // 
-            this.hexTreePictureBox.Location = new System.Drawing.Point(12, 12);
+            this.hexTreePictureBox.Location = new System.Drawing.Point(2, 0);
             this.hexTreePictureBox.Name = "hexTreePictureBox";
-            this.hexTreePictureBox.Size = new System.Drawing.Size(1202, 603);
+            this.hexTreePictureBox.Size = new System.Drawing.Size(897, 615);
             this.hexTreePictureBox.TabIndex = 0;
             this.hexTreePictureBox.TabStop = false;
             // 
@@ -44,7 +44,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1226, 627);
+            this.ClientSize = new System.Drawing.Size(901, 617);
             this.Controls.Add(this.hexTreePictureBox);
             this.Name = "HexTreeForm";
             this.Text = "HexTreeForm";

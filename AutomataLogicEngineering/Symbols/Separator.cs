@@ -10,8 +10,9 @@
         /// </summary>
         /// <param name="charSymbol">The char symbol.</param>
         /// <param name="id">The unique identifier of the symbol.</param>
-        public Separator(char charSymbol, int id)
-            : base(charSymbol, id)
+        /// <param name="nodeGraphId">The node graph identifier of the symbol.</param>
+        public Separator(char charSymbol, int id, int nodeGraphId)
+            : base(charSymbol, id, nodeGraphId)
         {
         }
     }
