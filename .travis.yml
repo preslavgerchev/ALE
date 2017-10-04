@@ -1,4 +1,4 @@
 language: csharp
 solution: "./AutomataLogicEngineering.sln"
 script:
-- xbuild /p:Configuration=Release AutomataLogicEngineering.sln
+- msbuild /p:Configuration=Release AutomataLogicEngineering.sln
