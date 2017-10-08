@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Exceptions;
-    using PropositionalLogic;
+    using Nodes;
     using Validation;
 
     /// <summary>

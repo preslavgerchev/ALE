@@ -4,7 +4,7 @@
     using System.Windows.Forms;
     using System.Drawing;
     using Exceptions;
-    using PropositionalLogic;
+    using Nodes;
 
     public partial class AutomataLogicEngineeringForm : Form
     {

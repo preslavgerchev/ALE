@@ -1,8 +1,8 @@
 ﻿namespace AutomataLogicEngineering.Test
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using PropositionalLogic;
     using Symbols;
+    using Nodes;
 
     /// <summary>
     /// A test class for <see cref="NodeTreeCreator.Initialize"/>.

@@ -1,8 +1,9 @@
-﻿namespace AutomataLogicEngineering.UI
+﻿using AutomataLogicEngineering.TruthTable;
+
+namespace AutomataLogicEngineering.UI
 {
     using System.Windows.Forms;
     using Nodes;
-    using PropositionalLogic;
 
     public partial class TruthTableForm : Form
     {

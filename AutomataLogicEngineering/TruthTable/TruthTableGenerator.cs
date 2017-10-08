@@ -1,11 +1,10 @@
-﻿namespace AutomataLogicEngineering.PropositionalLogic
+﻿namespace AutomataLogicEngineering.TruthTable
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using Nodes;
     using Symbols;
-    using TruthTable;
 
     /// <summary>
     /// A static class, responsible for generating a truth table out of a given root node.

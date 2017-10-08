@@ -1,7 +1,7 @@
-﻿namespace AutomataLogicEngineering.PropositionalLogic
+﻿namespace AutomataLogicEngineering.Common
 {
     using Symbols;
-
+    
     /// <summary>
     /// A static class, responsible for generating Ids for the <see cref="Symbol"/> instances.
     /// </summary>

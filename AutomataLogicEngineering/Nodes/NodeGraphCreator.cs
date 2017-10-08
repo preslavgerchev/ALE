@@ -1,10 +1,9 @@
-﻿namespace AutomataLogicEngineering.PropositionalLogic
+﻿namespace AutomataLogicEngineering.Nodes
 {
     using System;
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
-    using Nodes;
 
     /// <summary>
     /// A static class, responsible for creating a node graph image out of a root node.

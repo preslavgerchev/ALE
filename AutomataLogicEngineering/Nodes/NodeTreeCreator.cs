@@ -1,8 +1,8 @@
-﻿namespace AutomataLogicEngineering.PropositionalLogic
+﻿namespace AutomataLogicEngineering.Nodes
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Nodes;
+    using Common;
     using Symbols;
     using Validation;
 

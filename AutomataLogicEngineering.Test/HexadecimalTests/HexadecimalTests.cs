@@ -3,7 +3,7 @@
     using System.IO;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Newtonsoft.Json;
-    using PropositionalLogic;
+    using Nodes;
     using TruthTable;
 
     /// <summary>

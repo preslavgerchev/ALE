@@ -1,11 +1,10 @@
-﻿namespace AutomataLogicEngineering.PropositionalLogic
+﻿namespace AutomataLogicEngineering.Common
 {
     using System.Collections.Generic;
-    using System.Text.RegularExpressions;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using Exceptions;
     using Symbols;
-    using static IdGenerator;
 
     /// <summary>
     /// A static class, responsible for parsing a given string input in a list of symbols.
@@ -39,32 +38,32 @@
             switch (inputChar)
             {
                 case '(':
-                    return new Parenthesis(inputChar, GetNextSymbolId(), GetNextNodeGraphId(), ParenthesisSide.Opening);
+                    return new Parenthesis(inputChar, IdGenerator.GetNextSymbolId(), IdGenerator.GetNextNodeGraphId(), ParenthesisSide.Opening);
                 case ')':
-                    return new Parenthesis(inputChar, GetNextSymbolId(), GetNextNodeGraphId(), ParenthesisSide.Closing);
+                    return new Parenthesis(inputChar, IdGenerator.GetNextSymbolId(), IdGenerator.GetNextNodeGraphId(), ParenthesisSide.Closing);
                 case '~':
-                    return new Connective(inputChar, GetNextSymbolId(), GetNextNodeGraphId(), ConnectiveType.Not);
+                    return new Connective(inputChar, IdGenerator.GetNextSymbolId(), IdGenerator.GetNextNodeGraphId(), ConnectiveType.Not);
                 case '&':
-                    return new Connective(inputChar, GetNextSymbolId(), GetNextNodeGraphId(), ConnectiveType.And);
+                    return new Connective(inputChar, IdGenerator.GetNextSymbolId(), IdGenerator.GetNextNodeGraphId(), ConnectiveType.And);
                 case '|':
-                    return new Connective(inputChar, GetNextSymbolId(), GetNextNodeGraphId(), ConnectiveType.Or);
+                    return new Connective(inputChar, IdGenerator.GetNextSymbolId(), IdGenerator.GetNextNodeGraphId(), ConnectiveType.Or);
                 case '>':
                     return new Connective(
-                        inputChar, GetNextSymbolId(), GetNextNodeGraphId(), ConnectiveType.Implication);
+                        inputChar, IdGenerator.GetNextSymbolId(), IdGenerator.GetNextNodeGraphId(), ConnectiveType.Implication);
                 case '=':
                     return new Connective(
-                        inputChar, GetNextSymbolId(), GetNextNodeGraphId(), ConnectiveType.BiImplication);
+                        inputChar, IdGenerator.GetNextSymbolId(), IdGenerator.GetNextNodeGraphId(), ConnectiveType.BiImplication);
                 case ',':
-                    return new Separator(inputChar, GetNextSymbolId(), GetNextNodeGraphId());
+                    return new Separator(inputChar, IdGenerator.GetNextSymbolId(), IdGenerator.GetNextNodeGraphId());
                 default:
                     if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z]"))
                     {
                         if (!IdDictionary.TryGetValue(inputChar, out var id))
                         {
-                            id = GetNextSymbolId();
+                            id = IdGenerator.GetNextSymbolId();
                             IdDictionary.Add(inputChar, id);
                         }
-                        return new Predicate(inputChar, id, GetNextNodeGraphId());
+                        return new Predicate(inputChar, id, IdGenerator.GetNextNodeGraphId());
                     }
                     else
                     {
