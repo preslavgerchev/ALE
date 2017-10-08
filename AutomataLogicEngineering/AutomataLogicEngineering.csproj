@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\InvalidInputException.cs" />
+    <Compile Include="PropositionalLogic\IdGenerator.cs" />
     <Compile Include="UI\AutomataLogicEngineeringForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,7 +75,7 @@
     <Compile Include="TruthTable\TruthTable.cs" />
     <Compile Include="TruthTable\TruthTableCell.cs" />
     <Compile Include="TruthTable\TruthTableRow.cs" />
-    <Compile Include="PropositionalLogic\Validator.cs" />
+    <Compile Include="Validation\Validator.cs" />
     <Compile Include="Symbols\Connective.cs" />
     <Compile Include="Symbols\Parenthesis.cs" />
     <Compile Include="Symbols\ParenthesisSide.cs" />

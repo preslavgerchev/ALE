@@ -4,6 +4,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Exceptions;
     using PropositionalLogic;
+    using Validation;
 
     /// <summary>
     /// A test class for <see cref="Validator"/>.
@@ -16,12 +17,11 @@
         /// an exception and will be properly parsed.
         /// </summary>
         [TestMethod]
-        [Ignore]
         public void ValidPropositions_Test()
         {
             var validPropostions = new List<string>
             {
-                @">(A,B)",
+                @"&(>(A,B),C)",
                 @"~(A)",
                 @">(=(A,B),~(C))",
                 @"&(A,B)",
@@ -45,7 +45,6 @@
         /// <see cref="InvalidInputException"/>.
         /// </summary>
         [TestMethod]
-        [Ignore]
         public void InvalidPropositions_Test()
         {
             var invalidPropositions = new List<string>

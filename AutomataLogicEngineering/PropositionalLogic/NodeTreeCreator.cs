@@ -1,8 +1,10 @@
 ﻿namespace AutomataLogicEngineering.PropositionalLogic
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Nodes;
     using Symbols;
+    using Validation;
 
     /// <summary>
     /// A static class, responsible for creating a tree out of a given string input.
@@ -18,8 +20,10 @@
         public static Node Initialize(string input)
         {
             var symbols = Parser.ParseToSymbols(input);
-            // TODO PREGER refactor validation
-            // Validator.Validate(symbols);
+            // By using .ToList() we can pass a reference to a different list, thus
+            // keeping the symbols list intact. This is needed since validation directly
+            // manipulates the contents of the provided input to verify if it is valid.
+            Validator.ValidateInput(symbols.ToList());
             return NodeTreeCreator.CreateTree(symbols);
         }
 
@@ -28,7 +32,7 @@
         /// </summary>
         /// <param name="input">The list of symbols.</param>
         /// <returns>The root node of the tree.</returns>
-        private static Node CreateTree(IList<Symbol> input)
+        private static Node CreateTree(List<Symbol> input)
         {
             Node parentNode = null;
             foreach (var symbol in input)

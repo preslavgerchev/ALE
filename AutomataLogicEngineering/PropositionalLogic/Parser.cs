@@ -5,23 +5,13 @@
     using System.Linq;
     using Exceptions;
     using Symbols;
+    using static IdGenerator;
 
     /// <summary>
     /// A static class, responsible for parsing a given string input in a list of symbols.
     /// </summary>
     public static class Parser
-    {
-        /// <summary>
-        /// Gets the next unique identifier that can be assigned to a symbol.
-        /// </summary>
-        private static int symbolId = 0;
-
-        /// <summary>
-        /// Gets the next unique identifier that can be assigned to a symbol, to be used in 
-        /// drawing the node graph.
-        /// </summary>
-        private static int nodeGraphId = 0;
-        
+    { 
         /// <summary>
         /// A dictionary that stores the used identifiers for all predicates. If a duplicate predicate
         /// is found in the input then the same identifier can be reused and assiggned to the predicate.
@@ -33,24 +23,11 @@
         /// </summary>
         /// <param name="input">The string input.</param>
         /// <returns>A list of <see cref="Symbol"/> instances.</returns>
-        public static IList<Symbol> ParseToSymbols(string input)
+        public static List<Symbol> ParseToSymbols(string input)
         {
             var allChars = new Regex("\\s+").Replace(input, string.Empty).ToCharArray();
             return allChars.Select(ToSymbol).ToList();
         }
-
-        /// <summary>
-        /// Gets the next unique identifier that can be used to identify a symbol.
-        /// </summary>
-        /// <returns>An unique symbol identifier.</returns>
-        private static int GetNextSymbolId() => symbolId++;
-
-        /// <summary>
-        /// Gets the next unique identifier that can be assigned to a symbol, to be used in 
-        /// drawing the node graph.
-        /// </summary>
-        /// <returns>An unique node graph identifier.</returns>
-        private static int GetNextNodeGraphId() => nodeGraphId++;
 
         /// <summary>
         /// Parses a given char to its corresponding symbol.
@@ -91,7 +68,7 @@
                     }
                     else
                     {
-                        throw new InvalidInputException($"Invalid input found: '{inputChar}'.");
+                        throw new InvalidInputException();
                     }
             }
         }
