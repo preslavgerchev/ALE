@@ -1,47 +1,50 @@
-﻿using AutomataLogicEngineering.TruthTable;
-
-namespace AutomataLogicEngineering.UI
+﻿namespace AutomataLogicEngineering.UI
 {
     using System.Windows.Forms;
     using Nodes;
+    using TruthTable;
 
     public partial class TruthTableForm : Form
     {
+        private readonly TruthTable truthTable;
+        private readonly TruthTable simplifiedTruthTable;
+        private readonly TruthTable dnfTruthTable;
+
         public TruthTableForm(Node rootNode, string input)
         {
             InitializeComponent();
 
-            var truthTable = TruthTableGenerator.GenerateTruthTable(rootNode);
+            this.truthTable = TruthTableGenerator.GenerateTruthTable(rootNode);
             var allPredicates = TruthTableGenerator.GetAllPredicates(rootNode);
             foreach (var predicate in allPredicates)
             {
                 this.truthTableView.Columns.Add(predicate.ToString(), predicate.ToString());
                 this.simplifiedTruthTableView.Columns.Add(predicate.ToString(), predicate.ToString());
+                this.dnfTruthTableView.Columns.Add(predicate.ToString(), predicate.ToString());
             }
             this.truthTableView.Columns.Add("Result", input);
             this.simplifiedTruthTableView.Columns.Add("Result", input);
-            for (var i = 0; i < truthTable.Rows.Count; i++)
+            for (var i = 0; i < this.truthTable.Rows.Count; i++)
             {
-                var row = truthTable.Rows[i];
+                var row = this.truthTable.Rows[i];
                 this.truthTableView.Rows.Add();
                 for (var j = 0; j < row.Cells.Count; j++)
                 {
                     this.truthTableView.Rows[i].Cells[j].Value = row.Cells[j].SymbolInCell;
                 }
             }
-
-            truthTable.Calculate(rootNode);
+            this.truthTable.Calculate(rootNode);
             for (var i = 0; i < truthTable.Rows.Count; i++)
             {
                 var row = truthTable.Rows[i];
                 this.truthTableView.Rows[i].Cells["Result"].Value = row.ResultRepresentation;
             }
 
-            var simplifiedTable = truthTable.Simplify();
+            this.simplifiedTruthTable = this.truthTable.Simplify();
 
-            for (var i = 0; i < simplifiedTable.Rows.Count; i++)
+            for (var i = 0; i < this.simplifiedTruthTable.Rows.Count; i++)
             {
-                var row = simplifiedTable.Rows[i];
+                var row = this.simplifiedTruthTable.Rows[i];
                 this.simplifiedTruthTableView.Rows.Add();
                 for (var j = 0; j < row.Cells.Count; j++)
                 {
@@ -50,7 +53,29 @@ namespace AutomataLogicEngineering.UI
                 this.simplifiedTruthTableView.Rows[i].Cells["Result"].Value = row.ResultRepresentation;
             }
 
-            this.hexadecimalLbl.Text = truthTable.HexadecimalResult;
+            this.hexadecimalLbl.Text = this.truthTable.HexadecimalResult;
+
+            var dnfString = this.truthTable.ToDnfForm();
+            var dnfNode = NodeTreeCreator.Initialize(dnfString);
+            this.dnfTruthTableView.Columns.Add("Result", dnfString);
+            this.dnfTruthTable = TruthTableGenerator.GenerateTruthTable(dnfNode);
+            for (var i = 0; i < this.dnfTruthTable.Rows.Count; i++)
+            {
+                var row = this.dnfTruthTable.Rows[i];
+                this.dnfTruthTableView.Rows.Add();
+                for (var j = 0; j < row.Cells.Count; j++)
+                {
+                    this.dnfTruthTableView.Rows[i].Cells[j].Value = row.Cells[j].SymbolInCell;
+                }
+            }
+            this.dnfTruthTable.Calculate(dnfNode);
+            for (var i = 0; i < this.dnfTruthTable.Rows.Count; i++)
+            {
+                var row = truthTable.Rows[i];
+                this.dnfTruthTableView.Rows[i].Cells["Result"].Value = row.ResultRepresentation;
+            }
+            this.dnfHexValueLbl.Text = this.dnfTruthTable.HexadecimalResult;
+
             var imagePath = NodeGraphCreator.CreateNodeGraphImage(rootNode);
             new HexTreeForm(imagePath).Show();
         }
@@ -59,6 +84,7 @@ namespace AutomataLogicEngineering.UI
         {
             this.truthTableView.Dispose();
             this.simplifiedTruthTableView.Dispose();
+            this.dnfTruthTableView.Dispose();
         }
     }
 }

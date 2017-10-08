@@ -25,7 +25,8 @@
         public int ResultRepresentation => this.Result ? 1 : 0;
 
         /// <summary>
-        /// Indicates whether a row can be skipped when the truth table is being displayed.
+        /// Gets a value, indicating whether a row can be skipped when the truth table is 
+        /// being displayed.
         /// </summary>
         public bool CanBeSkipped { get; set; }
 
@@ -62,7 +63,7 @@
 
                 if (firstCell.SymbolInCell != secondCell.SymbolInCell)
                 {
-                    newCells.Add(new TruthTableCell('*', firstCell.Id));
+                    newCells.Add(new TruthTableCell('*', firstCell.Predicate, firstCell.Id));
                     amountOfSimplified++;
                 }
                 else
@@ -101,6 +102,22 @@
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Converts the truth table row to string, according to the DNF.
+        /// </summary>
+        /// <returns>The row as a string, according to the DNF.</returns>
+        public string ToDnfSymbols()
+        {
+            var dnfString = string.Empty;
+            for (var i = 0; i < this.Cells.Count; i++)
+            {
+                var cell = this.Cells[i];
+                var transformedCell = cell.SymbolInCell == '1' ? $"{cell.Predicate}" : $"~({cell.Predicate})";
+                dnfString = i == 0 ? transformedCell : $"&({dnfString},{transformedCell})";
+            }
+            return dnfString;
         }
     }
 }

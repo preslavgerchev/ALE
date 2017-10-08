@@ -65,7 +65,7 @@
             // further recursively and we can directly calculate the value of the children.
             if (this.Children.All(x => x.Symbol is Predicate))
             {
-                Predicate firstChild = this.Children[0].Symbol as Predicate;
+                var firstChild = this.Children[0].Symbol as Predicate;
                 Predicate secondChild = null;
                 if (symbolConn.Type != ConnectiveType.Not)
                 {
@@ -75,8 +75,8 @@
                 return this.Apply(firstChild.Value, secondChild?.Value ?? false);
             }
 
-            // If we have a predicate and a connective as children then we can use the value of the predicate directly
-            // and we can recursively call Apply(..) for the connective.
+            // If we have a predicate and a connective as children then we can use the value of the predicate 
+            // directly and we can recursively call Apply(..) for the connective.
             if (this.Children.Count(x => x.Symbol is Predicate) == 1
                 && this.Children.Count(x => x.Symbol is Connective) == 1)
             {
@@ -84,8 +84,8 @@
                 var connective = this.Children.Single(x => x.Symbol is Connective);
                 var connectiveIndex = this.Children.IndexOf(connective);
 
-                // If the connective is an implication (>) then it matters which value is passed first. As such we determine
-                // the connective index and if first then we pass the connective first.
+                // If the connective is an implication (>) then it matters which value is passed first. As such we 
+                // determine the connective index and if first then we pass the connective first.
                 return connectiveIndex == 0
                     ? this.Apply(connective.Apply(), predicate.Value)
                     : this.Apply(predicate.Value, connective.Apply());

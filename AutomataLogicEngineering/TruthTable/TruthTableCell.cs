@@ -6,6 +6,11 @@
     public class TruthTableCell
     {
         /// <summary>
+        /// Gets the predicate's value for which a value is assigned to this cell.
+        /// </summary>
+        public char Predicate { get; }
+
+        /// <summary>
         /// Gets the symbol in the cell. Can be either '1', '0' or '*'.
         /// </summary>
         public char SymbolInCell { get; }
@@ -20,10 +25,12 @@
         /// Initializes a new instance of the <see cref="TruthTableCell"/> class.
         /// </summary>
         /// <param name="symbolInCell">The symbol in the truth table cell.</param>
+        /// <param name="predicate">The predicate's value.</param>
         /// <param name="id">The unique identifier.</param>
-        public TruthTableCell(char symbolInCell, int id)
+        public TruthTableCell(char symbolInCell, char predicate, int id)
         {
             this.SymbolInCell = symbolInCell;
+            this.Predicate = predicate;
             this.Id = id;
         }
     }

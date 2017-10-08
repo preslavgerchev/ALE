@@ -65,6 +65,23 @@
         }
 
         /// <summary>
+        /// Converts the truth table to a DNF form.
+        /// </summary>
+        /// <returns>The string representation of the DNF form.</returns>
+        public string ToDnfForm()
+        {
+            var dnfString = string.Empty;
+            var trueRows = this.Rows.Where(x => x.Result).ToList();
+            for (var i = 0; i < trueRows.Count; i++)
+            {
+                var stringifiedRow = trueRows[i].ToDnfSymbols();
+                dnfString = i == 0 ? stringifiedRow : $"|({dnfString},{stringifiedRow})";
+            }
+
+            return dnfString;
+        }
+
+        /// <summary>
         /// Returns a value indicating whether the truth table can be simplified.
         /// </summary>
         /// <returns>True if the table can be simplified; otherwise - false.</returns>

@@ -1,13 +1,11 @@
-﻿using AutomataLogicEngineering.Common;
-
-namespace AutomataLogicEngineering.Validation
+﻿namespace AutomataLogicEngineering.Validation
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using Exceptions;
     using Symbols;
-    using static IdGenerator;
+    using static Common.IdGenerator;
 
     /// <summary>
     /// A static class, responsible for validating the list of symbols provided.
