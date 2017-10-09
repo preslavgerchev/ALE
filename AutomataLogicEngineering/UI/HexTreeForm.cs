@@ -7,6 +7,7 @@
         public HexTreeForm(string imageFilePath)
         {
             InitializeComponent();
+            this.hexTreePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             this.hexTreePictureBox.ImageLocation = imageFilePath;
         }
     }

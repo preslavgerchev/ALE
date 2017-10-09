@@ -82,6 +82,23 @@
         }
 
         /// <summary>
+        /// Converts the truth table to a CNF form.
+        /// </summary>
+        /// <returns>The string representation of the CNF form.</returns>
+        public string ToCnfForm()
+        {
+            var cnfString = string.Empty;
+            var falseRows = this.Rows.Where(x => !x.Result).ToList();
+            for (var i = 0; i < falseRows.Count; i++)
+            {
+                var stringifiedRow = falseRows[i].ToCnfSymbols();
+                cnfString = i == 0 ? stringifiedRow : $"&({cnfString},{stringifiedRow})";
+            }
+
+            return cnfString;
+        }
+
+        /// <summary>
         /// Returns a value indicating whether the truth table can be simplified.
         /// </summary>
         /// <returns>True if the table can be simplified; otherwise - false.</returns>

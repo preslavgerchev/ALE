@@ -119,5 +119,21 @@
             }
             return dnfString;
         }
+
+        /// <summary>
+        /// Converts the truth table row to string, according to the CNF.
+        /// </summary>
+        /// <returns>The row as a string, according to the CNF.</returns>
+        public string ToCnfSymbols()
+        {
+            var cnfString = string.Empty;
+            for (var i = 0; i < this.Cells.Count; i++)
+            {
+                var cell = this.Cells[i];
+                var transformedCell = cell.SymbolInCell == '0' ? $"{cell.Predicate}" : $"~({cell.Predicate})";
+                cnfString = i == 0 ? transformedCell : $"|({cnfString},{transformedCell})";
+            }
+            return cnfString;
+        }
     }
 }

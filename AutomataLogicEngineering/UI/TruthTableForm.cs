@@ -75,9 +75,15 @@
                 this.dnfTruthTableView.Rows[i].Cells["Result"].Value = row.ResultRepresentation;
             }
             this.dnfHexValueLbl.Text = this.dnfTruthTable.HexadecimalResult;
-
-            var imagePath = NodeGraphCreator.CreateNodeGraphImage(rootNode);
-            new HexTreeForm(imagePath).Show();
+            this.truthTableView.Columns["Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.simplifiedTruthTableView.Columns["Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.dnfTruthTableView.Columns["Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            for (var i = 0; i < this.truthTableView.Columns.Count; i++)
+            {
+                this.truthTableView.Columns[i].Frozen = false;
+                this.dnfTruthTableView.Columns[i].Frozen = false;
+                this.simplifiedTruthTableView.Columns[i].Frozen = false;
+            }
         }
 
         private void TruthTableForm_FormClosing(object sender, FormClosingEventArgs e)

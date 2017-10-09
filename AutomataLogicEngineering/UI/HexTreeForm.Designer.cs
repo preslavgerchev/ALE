@@ -36,7 +36,7 @@
             // 
             this.hexTreePictureBox.Location = new System.Drawing.Point(2, 0);
             this.hexTreePictureBox.Name = "hexTreePictureBox";
-            this.hexTreePictureBox.Size = new System.Drawing.Size(897, 615);
+            this.hexTreePictureBox.Size = new System.Drawing.Size(887, 605);
             this.hexTreePictureBox.TabIndex = 0;
             this.hexTreePictureBox.TabStop = false;
             // 

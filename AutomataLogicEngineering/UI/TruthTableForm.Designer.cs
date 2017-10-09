@@ -50,7 +50,7 @@
             this.truthTableView.Margin = new System.Windows.Forms.Padding(2);
             this.truthTableView.Name = "truthTableView";
             this.truthTableView.RowTemplate.Height = 24;
-            this.truthTableView.Size = new System.Drawing.Size(916, 284);
+            this.truthTableView.Size = new System.Drawing.Size(1186, 284);
             this.truthTableView.TabIndex = 4;
             // 
             // simplifiedTruthTableView
@@ -60,7 +60,7 @@
             this.simplifiedTruthTableView.Margin = new System.Windows.Forms.Padding(2);
             this.simplifiedTruthTableView.Name = "simplifiedTruthTableView";
             this.simplifiedTruthTableView.RowTemplate.Height = 24;
-            this.simplifiedTruthTableView.Size = new System.Drawing.Size(916, 295);
+            this.simplifiedTruthTableView.Size = new System.Drawing.Size(1186, 295);
             this.simplifiedTruthTableView.TabIndex = 5;
             // 
             // truthTableLbl
@@ -105,7 +105,7 @@
             this.dnfTruthTableView.Margin = new System.Windows.Forms.Padding(2);
             this.dnfTruthTableView.Name = "dnfTruthTableView";
             this.dnfTruthTableView.RowTemplate.Height = 24;
-            this.dnfTruthTableView.Size = new System.Drawing.Size(916, 295);
+            this.dnfTruthTableView.Size = new System.Drawing.Size(1186, 295);
             this.dnfTruthTableView.TabIndex = 11;
             // 
             // dnfTruthTableLbl
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(938, 973);
+            this.ClientSize = new System.Drawing.Size(1208, 985);
             this.Controls.Add(this.dnfHexValueLbl);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dnfTruthTableLbl);
