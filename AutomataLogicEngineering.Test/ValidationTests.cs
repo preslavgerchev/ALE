@@ -1,8 +1,11 @@
 ﻿namespace AutomataLogicEngineering.Test
 {
+    using System.IO;
+    using System.Linq;
     using System.Collections.Generic;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Exceptions;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Newtonsoft.Json;
     using Nodes;
     using Validation;
 
@@ -19,24 +22,20 @@
         [TestMethod]
         public void ValidPropositions_Test()
         {
-            var validPropostions = new List<string>
+            List<string> collection;
+            using (var r = new StreamReader("../../../validPropositions.json"))
             {
-                @"&(>(A,B),C)",
-                @"~(A)",
-                @">(=(A,B),~(C))",
-                @"&(A,B)",
-                @"~(A)",
-                @"&(A,~(B))",
-                @">(=(D,A),~(B))",
-                @"T",
-                @"&(&(=(A,B),>(&(A,B),~(C))),>(A,~(&(A,B))))",
-                @"~(A)",
-                @"A"
-            };
-
-            foreach (var input in validPropostions)
+                var json = r.ReadToEnd();
+                collection = JsonConvert.DeserializeObject<List<string>>(json);
+                // TODO PREGER temporarily skip nandify until implemented.
+                // TODO PREGER what to do with single digit inputs?.
+                collection = collection
+                    .Where(x => !x.Contains("%") && !x.Any(char.IsDigit))
+                    .ToList();
+            }
+            foreach (var value in collection)
             {
-                NodeTreeCreator.Initialize(input);
+                NodeTreeCreator.Initialize(value);
             }
         }
 
@@ -47,28 +46,18 @@
         [TestMethod]
         public void InvalidPropositions_Test()
         {
-            var invalidPropositions = new List<string>
+            List<string> collection;
+            using (var r = new StreamReader("../../../invalidPropositions.json"))
             {
-                @"~(A,B)",
-                @"&(A,|(B))",
-                @">",
-                @"~",
-                @"=",
-                @"3",
-                @"4",
-                @"11",
-                @"~(,B)",
-                @">(,B)",
-                @"=(A,)",
-                @">(,)",
-                @"=(,)",
-                @"~()",
-                @">(,",
-                @",,",
-                @" "
-            };
-
-            foreach (var input in invalidPropositions)
+                var json = r.ReadToEnd();
+                collection = JsonConvert.DeserializeObject<List<string>>(json);
+                // TODO PREGER temporarily skip nandify until implemented.
+                // TODO PREGER what to do with single digit inputs?.
+                collection = collection
+                    .Where(x => !x.Contains("%") && !x.Any(char.IsDigit))
+                    .ToList();
+            }
+            foreach (var input in collection)
             {
                 TestExtensions.Throws<InvalidInputException>(() => NodeTreeCreator.Initialize(input));
             }

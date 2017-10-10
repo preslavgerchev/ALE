@@ -5,6 +5,7 @@
     using System.Drawing;
     using Exceptions;
     using Nodes;
+    using TruthTable;
 
     public partial class AutomataLogicEngineeringForm : Form
     {
@@ -37,7 +38,55 @@
             {
                 this.validInputLabel.Text = string.Empty;
                 var rootNode = NodeTreeCreator.Initialize(input);
-                new TruthTableForm(rootNode, input).Show();
+                new TruthTableForm(rootNode, input, TruthTableType.Normal).Show();
+            }
+            catch (InvalidInputException ex)
+            {
+                this.validInputLabel.Text = ex.Message;
+                this.validInputLabel.ForeColor = Color.Red;
+            }
+        }
+
+        private void showDnfBtn_Click(object sender, EventArgs e)
+        {
+            var input = this.inputTextBox.Text;
+            try
+            {
+                this.validInputLabel.Text = string.Empty;
+                var rootNode = NodeTreeCreator.Initialize(input);
+                new TruthTableForm(rootNode, input, TruthTableType.Dnf).Show();
+            }
+            catch (InvalidInputException ex)
+            {
+                this.validInputLabel.Text = ex.Message;
+                this.validInputLabel.ForeColor = Color.Red;
+            }
+        }
+
+        private void showCnfBtn_Click(object sender, EventArgs e)
+        {
+            var input = this.inputTextBox.Text;
+            try
+            {
+                this.validInputLabel.Text = string.Empty;
+                var rootNode = NodeTreeCreator.Initialize(input);
+                new TruthTableForm(rootNode, input, TruthTableType.Cnf).Show();
+            }
+            catch (InvalidInputException ex)
+            {
+                this.validInputLabel.Text = ex.Message;
+                this.validInputLabel.ForeColor = Color.Red;
+            }
+        }
+
+        private void showSimplifiedBtn_Click(object sender, EventArgs e)
+        {
+            var input = this.inputTextBox.Text;
+            try
+            {
+                this.validInputLabel.Text = string.Empty;
+                var rootNode = NodeTreeCreator.Initialize(input);
+                new TruthTableForm(rootNode, input, TruthTableType.Simplified).Show();
             }
             catch (InvalidInputException ex)
             {

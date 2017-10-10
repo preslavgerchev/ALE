@@ -1,8 +1,8 @@
 ﻿namespace AutomataLogicEngineering.TruthTable
 {
-    using System;
     using System.Linq;
     using System.Collections.Generic;
+    using Common;
     using Nodes;
     using Symbols;
 
@@ -20,11 +20,20 @@
         /// Gets the hexadecimal representation of the result.
         /// </summary>
         public string HexadecimalResult =>
-            Convert.ToInt32(string.Join(
+            string.Join(
                     separator: string.Empty,
-                    values: this.Rows.Select(x => x.ResultRepresentation).Reverse()), 2)
-                .ToString("X")
-                .PadLeft(2, '0');
+                    values: this.Rows.Select(x => x.ResultRepresentation).Reverse())
+                .ToHexString();
+
+        /// <summary>
+        /// Gets a value, indicating whether this truth table can be converted to a DNF one.
+        /// </summary>
+        public bool CanBeConvertedToDnf => this.Rows.Any(x => x.Result);
+
+        /// <summary>
+        /// Gets a value, indicating whether this truth table can be converted to a CNF one.
+        /// </summary>
+        public bool CanBeConvertedToCnf => this.Rows.Any(x => !x.Result);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TruthTable"/> class.
