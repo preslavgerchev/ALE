@@ -25,7 +25,7 @@
             var mod4Len = binary.Length % 8;
             if (mod4Len != 0)
             {
-                // pad to length multiple of 8
+                // Pad to length multiple of 8.
                 binary = binary.PadLeft(((binary.Length / 8) + 1) * 8, '0');
             }
 
