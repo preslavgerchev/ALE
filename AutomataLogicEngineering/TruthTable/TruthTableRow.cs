@@ -1,9 +1,8 @@
-﻿using System.Linq;
-
-namespace AutomataLogicEngineering.TruthTable
+﻿namespace AutomataLogicEngineering.TruthTable
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Represents a single row in the truth table.
