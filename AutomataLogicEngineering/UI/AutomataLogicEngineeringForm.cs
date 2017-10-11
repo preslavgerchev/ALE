@@ -33,60 +33,42 @@
 
         private void showTruthTableBtn_Click(object sender, EventArgs e)
         {
-            var input = this.inputTextBox.Text;
-            try
-            {
-                this.validInputLabel.Text = string.Empty;
-                var rootNode = NodeTreeCreator.Initialize(input);
-                new TruthTableForm(rootNode, input, TruthTableType.Normal).Show();
-            }
-            catch (InvalidInputException ex)
-            {
-                this.validInputLabel.Text = ex.Message;
-                this.validInputLabel.ForeColor = Color.Red;
-            }
+            this.InitializeTable(TruthTableType.Normal);
         }
 
         private void showDnfBtn_Click(object sender, EventArgs e)
         {
-            var input = this.inputTextBox.Text;
-            try
-            {
-                this.validInputLabel.Text = string.Empty;
-                var rootNode = NodeTreeCreator.Initialize(input);
-                new TruthTableForm(rootNode, input, TruthTableType.Dnf).Show();
-            }
-            catch (InvalidInputException ex)
-            {
-                this.validInputLabel.Text = ex.Message;
-                this.validInputLabel.ForeColor = Color.Red;
-            }
+            this.InitializeTable(TruthTableType.Dnf);
         }
 
         private void showCnfBtn_Click(object sender, EventArgs e)
         {
-            var input = this.inputTextBox.Text;
-            try
-            {
-                this.validInputLabel.Text = string.Empty;
-                var rootNode = NodeTreeCreator.Initialize(input);
-                new TruthTableForm(rootNode, input, TruthTableType.Cnf).Show();
-            }
-            catch (InvalidInputException ex)
-            {
-                this.validInputLabel.Text = ex.Message;
-                this.validInputLabel.ForeColor = Color.Red;
-            }
+            this.InitializeTable(TruthTableType.Cnf);
         }
 
         private void showSimplifiedBtn_Click(object sender, EventArgs e)
+        {
+            this.InitializeTable(TruthTableType.Simplified);
+        }
+
+        private void showCnfSimplifiedBtn_Click(object sender, EventArgs e)
+        {
+            this.InitializeTable(TruthTableType.CnfSimplified);
+        }
+
+        private void showDnfSimplifiedBtn_Click(object sender, EventArgs e)
+        {
+            this.InitializeTable(TruthTableType.DnfSimplified);
+        }
+
+        private void InitializeTable(TruthTableType type)
         {
             var input = this.inputTextBox.Text;
             try
             {
                 this.validInputLabel.Text = string.Empty;
                 var rootNode = NodeTreeCreator.Initialize(input);
-                new TruthTableForm(rootNode, input, TruthTableType.Simplified).Show();
+                new TruthTableForm(rootNode, input, type).Show();
             }
             catch (InvalidInputException ex)
             {

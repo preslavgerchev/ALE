@@ -92,7 +92,7 @@
                         var symbolsToValidate = symbols.Skip(opening).Take(closing - opening).ToList();
                         ValidateSinglePair(symbolsToValidate);
                         // Remove the validated pair and replace it with a single predicate. Also break out of
-                        // the break loop.
+                        // the for loop.
                         newList.RemoveRange(opening, closing - opening);
                         newList.Insert(opening, new Predicate('A', GetNextSymbolId(), GetNextNodeGraphId()));
                         break;

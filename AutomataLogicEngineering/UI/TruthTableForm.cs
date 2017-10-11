@@ -26,6 +26,12 @@
                 case TruthTableType.Cnf:
                     this.InitializeCnfTable(rootNode);
                     break;
+                case TruthTableType.DnfSimplified:
+                    this.InitializeDnfSimplifiedTable(rootNode);
+                    break;
+                case TruthTableType.CnfSimplified:
+                    this.InitializeCnfSimplifiedTable(rootNode);
+                    break;
                 default:
                     throw new Exception($"Invalid truth table type value '{type}' found.");
             }
@@ -175,6 +181,88 @@
                 this.truthTableView.Rows[i].Cells["Result"].Value = row.ResultRepresentation;
             }
             this.hexadecimalLbl.Text = cnfTable.HexadecimalResult;
+            this.truthTableView.Columns["Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void InitializeCnfSimplifiedTable(Node rootNode)
+        {
+            var truthTable = TruthTableGenerator.GenerateTruthTable(rootNode);
+            truthTable.Calculate(rootNode);
+            truthTable = truthTable.Simplify();
+            if (!truthTable.CanBeConvertedToCnf)
+            {
+                this.truthTableLbl.Text = @"Cannot convert the input to CNF!";
+                this.truthTableLbl.ForeColor = Color.Red;
+                return;
+            }
+
+            this.truthTableLbl.Text = @"CNF truth table";
+            var allPredicates = TruthTableGenerator.GetAllPredicates(rootNode);
+            foreach (var predicate in allPredicates)
+            {
+                this.truthTableView.Columns.Add(predicate.ToString(), predicate.ToString());
+            }
+            for (var i = 0; i < truthTable.Rows.Count; i++)
+            {
+                var row = truthTable.Rows[i];
+                this.truthTableView.Rows.Add();
+                for (var j = 0; j < row.Cells.Count; j++)
+                {
+                    this.truthTableView.Rows[i].Cells[j].Value = row.Cells[j].SymbolInCell;
+                }
+            }
+            var cnfString = truthTable.ToCnfForm();
+            var cnfRoot = NodeTreeCreator.Initialize(cnfString);
+            var cnfTable = TruthTableGenerator.GenerateTruthTable(cnfRoot);
+            cnfTable.Calculate(rootNode);
+            this.truthTableView.Columns.Add("Result", cnfString);
+            for (var i = 0; i < cnfTable.Rows.Count; i++)
+            {
+                var row = cnfTable.Rows[i];
+                this.truthTableView.Rows[i].Cells["Result"].Value = row.ResultRepresentation;
+            }
+            this.hexadecimalLbl.Text = cnfTable.HexadecimalResult;
+            this.truthTableView.Columns["Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void InitializeDnfSimplifiedTable(Node rootNode)
+        {
+            var truthTable = TruthTableGenerator.GenerateTruthTable(rootNode);
+            truthTable.Calculate(rootNode);
+            truthTable = truthTable.Simplify();
+            if (!truthTable.CanBeConvertedToDnf)
+            {
+                this.truthTableLbl.Text = @"Cannot convert the input to DNF!";
+                this.truthTableLbl.ForeColor = Color.Red;
+                return;
+            }
+
+            this.truthTableLbl.Text = @"DNF truth table";
+            var dnfString = truthTable.ToDnfForm();
+            var dnfRoot = NodeTreeCreator.Initialize(dnfString);
+            var dnfTable = TruthTableGenerator.GenerateTruthTable(dnfRoot);
+            var allPredicates = TruthTableGenerator.GetAllPredicates(rootNode);
+            foreach (var predicate in allPredicates)
+            {
+                this.truthTableView.Columns.Add(predicate.ToString(), predicate.ToString());
+            }
+            this.truthTableView.Columns.Add("Result", dnfString);
+            for (var i = 0; i < dnfTable.Rows.Count; i++)
+            {
+                var row = dnfTable.Rows[i];
+                this.truthTableView.Rows.Add();
+                for (var j = 0; j < row.Cells.Count; j++)
+                {
+                    this.truthTableView.Rows[i].Cells[j].Value = row.Cells[j].SymbolInCell;
+                }
+            }
+            dnfTable.Calculate(rootNode);
+            for (var i = 0; i < dnfTable.Rows.Count; i++)
+            {
+                var row = dnfTable.Rows[i];
+                this.truthTableView.Rows[i].Cells["Result"].Value = row.ResultRepresentation;
+            }
+            this.hexadecimalLbl.Text = dnfTable.HexadecimalResult;
             this.truthTableView.Columns["Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }

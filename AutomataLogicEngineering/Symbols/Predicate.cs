@@ -27,7 +27,8 @@
             {
                 if (this.IsDigit)
                 {
-                    throw new InvalidOperationException();
+                    throw new InvalidOperationException(
+                        "Cannot set value for Predicate.Value since the char is a digit.");
                 }
                 this.value = value;
             }
@@ -53,7 +54,7 @@
             // since it's either 0 or 1.
             if (this.IsDigit)
             {
-                this.Value = this.CharSymbol == '1';
+                this.value = this.CharSymbol == '1';
             }
         }
     }

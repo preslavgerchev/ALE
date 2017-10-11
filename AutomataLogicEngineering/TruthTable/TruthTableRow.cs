@@ -1,4 +1,6 @@
-﻿namespace AutomataLogicEngineering.TruthTable
+﻿using System.Linq;
+
+namespace AutomataLogicEngineering.TruthTable
 {
     using System;
     using System.Collections.Generic;
@@ -111,9 +113,10 @@
         public string ToDnfSymbols()
         {
             var dnfString = string.Empty;
-            for (var i = 0; i < this.Cells.Count; i++)
+            var cellsWithoutStars = this.Cells.Where(x => x.SymbolInCell != '*').ToList();
+            for (var i = 0; i < cellsWithoutStars.Count; i++)
             {
-                var cell = this.Cells[i];
+                var cell = cellsWithoutStars[i];
                 var transformedCell = cell.SymbolInCell == '1' ? $"{cell.Predicate}" : $"~({cell.Predicate})";
                 dnfString = i == 0 ? transformedCell : $"&({dnfString},{transformedCell})";
             }
@@ -127,9 +130,10 @@
         public string ToCnfSymbols()
         {
             var cnfString = string.Empty;
-            for (var i = 0; i < this.Cells.Count; i++)
+            var cellsWithoutStars = this.Cells.Where(x => x.SymbolInCell != '*').ToList();
+            for (var i = 0; i < cellsWithoutStars.Count; i++)
             {
-                var cell = this.Cells[i];
+                var cell = cellsWithoutStars[i];
                 var transformedCell = cell.SymbolInCell == '0' ? $"{cell.Predicate}" : $"~({cell.Predicate})";
                 cnfString = i == 0 ? transformedCell : $"|({cnfString},{transformedCell})";
             }

@@ -24,5 +24,15 @@
         /// Represents the DNF form of a normal truth table.
         /// </summary>
         Cnf,
+
+        /// <summary>
+        /// Represents the DNF form of a simplified normal truth table.
+        /// </summary>
+        DnfSimplified,
+
+        /// <summary>
+        /// Represents the CNF form of a simplified normal truth table.
+        /// </summary>
+        CnfSimplified,
     }
 }
