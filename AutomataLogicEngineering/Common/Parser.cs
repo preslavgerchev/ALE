@@ -11,7 +11,7 @@
     /// A static class, responsible for parsing a given string input in a list of symbols.
     /// </summary>
     public static class Parser
-    { 
+    {
         /// <summary>
         /// A dictionary that stores the used identifiers for all predicates. If a duplicate predicate
         /// is found in the input then the same identifier can be reused and assiggned to the predicate.
@@ -54,10 +54,13 @@
                 case '=':
                     return new Connective(
                         inputChar, GetNextSymbolId(), GetNextNodeGraphId(), ConnectiveType.BiImplication);
+                case '%':
+                    return new Connective(
+                        inputChar, GetNextSymbolId(), GetNextNodeGraphId(), ConnectiveType.Nandify);
                 case ',':
                     return new Separator(inputChar, GetNextSymbolId(), GetNextNodeGraphId());
                 default:
-                    if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z]"))
+                    if (Regex.IsMatch(inputChar.ToString(), "[a-zA-Z01]"))
                     {
                         if (!IdDictionary.TryGetValue(inputChar, out var id))
                         {

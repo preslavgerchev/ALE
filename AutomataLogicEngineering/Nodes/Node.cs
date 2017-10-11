@@ -53,7 +53,15 @@
         /// <returns>The end value of the entire proposional input.</returns>
         public bool Apply()
         {
-            // We cannot apply anything on a node that's not connective.
+            // If the root node is a single predicate, then return it's value
+            // directly.
+            if (this.Symbol is Predicate p)
+            {
+                return p.Value;
+            }
+
+            // Else the node is not a single predicate, then we cannot apply on anything but
+            // a connective.
             if (!(this.Symbol is Connective))
             {
                 throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
@@ -125,6 +133,8 @@
                     return !firstValue;
                 case ConnectiveType.BiImplication:
                     return firstValue == secondValue;
+                case ConnectiveType.Nandify:
+                    return !(firstValue && secondValue);
                 default:
                     throw new Exception($"Unknown connective type {symbolConn.Type} found.");
             }

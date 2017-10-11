@@ -28,6 +28,11 @@
         /// <summary>
         /// Represents the = connective.
         /// </summary>
-        BiImplication = 4
+        BiImplication = 4,
+
+        /// <summary>
+        /// Represents the % connective.
+        /// </summary>
+        Nandify = 5
     }
 }

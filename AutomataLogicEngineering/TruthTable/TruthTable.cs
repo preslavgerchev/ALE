@@ -165,7 +165,7 @@
         /// <param name="cell">The cell the value of which should be assigned.</param>
         private void AssignValueToNode(Node node, TruthTableCell cell)
         {
-            if (node.Symbol.Id == cell.Id && node.Symbol is Predicate pred)
+            if (node.Symbol.Id == cell.Id && node.Symbol is Predicate pred && !pred.IsDigit)
             {
                 pred.Value = cell.SymbolInCell == '1';
             }

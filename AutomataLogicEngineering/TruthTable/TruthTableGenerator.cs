@@ -43,7 +43,10 @@
         {
             var predicatesList = new List<Predicate>();
             FindAndAddPredicates(node, predicatesList);
-            return predicatesList;
+            return predicatesList
+                .Where(x => !x.IsDigit)
+                .OrderBy(x => x.CharSymbol)
+                .ToList();
         }
 
         /// <summary>
