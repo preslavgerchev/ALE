@@ -27,11 +27,6 @@
             {
                 var json = r.ReadToEnd();
                 collection = JsonConvert.DeserializeObject<List<string>>(json);
-                // TODO PREGER temporarily skip nandify until implemented.
-                // TODO PREGER what to do with single digit inputs?.
-                collection = collection
-                    .Where(x => !x.Contains("%") && !x.Any(char.IsDigit))
-                    .ToList();
             }
             foreach (var value in collection)
             {

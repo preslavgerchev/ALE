@@ -31,7 +31,9 @@
                 rows.Add(new TruthTableRow(rowList));
             }
 
-            return new TruthTable(rows);
+            var table = new TruthTable(rows);
+            table.Calculate(node);
+            return table;
         }
 
         /// <summary>

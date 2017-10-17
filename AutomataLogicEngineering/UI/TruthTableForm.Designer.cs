@@ -30,55 +30,36 @@
         {
             this.truthTableView = new System.Windows.Forms.DataGridView();
             this.truthTableLbl = new System.Windows.Forms.Label();
-            this.hexadecimalLbl = new System.Windows.Forms.Label();
-            this.hexadecimalValueLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.truthTableView)).BeginInit();
             this.SuspendLayout();
             // 
             // truthTableView
             // 
             this.truthTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.truthTableView.Location = new System.Drawing.Point(11, 29);
-            this.truthTableView.Margin = new System.Windows.Forms.Padding(2);
+            this.truthTableView.Location = new System.Drawing.Point(15, 36);
+            this.truthTableView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.truthTableView.Name = "truthTableView";
             this.truthTableView.RowTemplate.Height = 24;
-            this.truthTableView.Size = new System.Drawing.Size(1186, 579);
+            this.truthTableView.Size = new System.Drawing.Size(1581, 713);
             this.truthTableView.TabIndex = 4;
             // 
             // truthTableLbl
             // 
             this.truthTableLbl.AutoSize = true;
-            this.truthTableLbl.Location = new System.Drawing.Point(13, 11);
+            this.truthTableLbl.Location = new System.Drawing.Point(17, 14);
+            this.truthTableLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.truthTableLbl.Name = "truthTableLbl";
-            this.truthTableLbl.Size = new System.Drawing.Size(0, 13);
+            this.truthTableLbl.Size = new System.Drawing.Size(0, 17);
             this.truthTableLbl.TabIndex = 6;
-            // 
-            // hexadecimalLbl
-            // 
-            this.hexadecimalLbl.AutoSize = true;
-            this.hexadecimalLbl.Location = new System.Drawing.Point(422, 9);
-            this.hexadecimalLbl.Name = "hexadecimalLbl";
-            this.hexadecimalLbl.Size = new System.Drawing.Size(0, 13);
-            this.hexadecimalLbl.TabIndex = 8;
-            // 
-            // hexadecimalValueLbl
-            // 
-            this.hexadecimalValueLbl.AutoSize = true;
-            this.hexadecimalValueLbl.Location = new System.Drawing.Point(348, 9);
-            this.hexadecimalValueLbl.Name = "hexadecimalValueLbl";
-            this.hexadecimalValueLbl.Size = new System.Drawing.Size(58, 13);
-            this.hexadecimalValueLbl.TabIndex = 9;
-            this.hexadecimalValueLbl.Text = "Hex value:";
             // 
             // TruthTableForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1208, 616);
-            this.Controls.Add(this.hexadecimalValueLbl);
-            this.Controls.Add(this.hexadecimalLbl);
+            this.ClientSize = new System.Drawing.Size(1611, 758);
             this.Controls.Add(this.truthTableLbl);
             this.Controls.Add(this.truthTableView);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TruthTableForm";
             this.Text = "Truth Table";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TruthTableForm_FormClosing);
@@ -92,7 +73,5 @@
 
         private System.Windows.Forms.DataGridView truthTableView;
         private System.Windows.Forms.Label truthTableLbl;
-        private System.Windows.Forms.Label hexadecimalLbl;
-        private System.Windows.Forms.Label hexadecimalValueLbl;
     }
 }

@@ -95,7 +95,7 @@
                     $"Internal error. Cannot call GetInfixNotation(..) for symbol '{this.Symbol.CharSymbol}'.");
             }
 
-            var symbolConn = (Connective) this.Symbol;
+            var symbolConn = (Connective)this.Symbol;
 
             // In case all children of the connective are predicates this means we do not have to go
             // further recursively and we can directly get the infix notation, using the children predicates.
@@ -159,7 +159,7 @@
                 throw new Exception($"Internal error. Cannot call Apply(..) for symbol '{this.Symbol.CharSymbol}'.");
             }
 
-            var symbolConn = (Connective) this.Symbol;
+            var symbolConn = (Connective)this.Symbol;
 
             // In case all children of the connective are predicates this means we do not have to go
             // further recursively and we can directly calculate the value of the children.
@@ -212,7 +212,7 @@
                 throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
             }
 
-            var symbolConn = (Connective) this.Symbol;
+            var symbolConn = (Connective)this.Symbol;
             switch (symbolConn.Type)
             {
                 case ConnectiveType.And:
@@ -249,7 +249,7 @@
                 throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
             }
 
-            var symbolConn = (Connective) this.Symbol;
+            var symbolConn = (Connective)this.Symbol;
             switch (symbolConn.Type)
             {
                 case ConnectiveType.And:
@@ -278,6 +278,6 @@
         /// <param name="predicate">The predicate.</param>
         /// <returns>The infix notation for the predicate.</returns>
         private string GetInfixNotationForPredicate(string predicate) =>
-            predicate = predicate == "1" ? "True" : predicate == "0" ? "False" : predicate;
+            predicate == "1" ? "True" : predicate == "0" ? "False" : predicate;
     }
 }

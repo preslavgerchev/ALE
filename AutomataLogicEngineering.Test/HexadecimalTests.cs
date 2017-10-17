@@ -30,7 +30,6 @@
             {
                 var node = NodeTreeCreator.Initialize(hexPair.Key);
                 var truthTable = TruthTableGenerator.GenerateTruthTable(node);
-                truthTable.Calculate(node);
                 Assert.AreEqual(hexPair.Value, truthTable.HexadecimalResult);
             }
         }
