@@ -297,7 +297,6 @@
             this.Name = "AutomataLogicEngineeringForm";
             this.Text = "Automata Logic Engineering";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.AutomataLogicEngineeringForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

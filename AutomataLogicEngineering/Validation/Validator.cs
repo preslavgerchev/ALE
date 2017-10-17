@@ -69,6 +69,12 @@
         private static List<Symbol> Validate(List<Symbol> symbols)
         {
             var newList = symbols;
+
+            if (symbols.Count(x => x is Parenthesis) == 0)
+            {
+                throw new InvalidInputException();
+            }
+
             var parenthesisStack = new Stack<int>();
             for (var i = 0; i < newList.Count(); i++)
             {
@@ -128,34 +134,34 @@
                         isNegation = (symbol as Connective).Type == ConnectiveType.Not;
                         break;
                     case 1:
-                    {
-                        if (!(symbol is Parenthesis p) || p.Side != ParenthesisSide.Opening)
-                            throw new InvalidInputException();
-                        break;
-                    }
+                        {
+                            if (!(symbol is Parenthesis p) || p.Side != ParenthesisSide.Opening)
+                                throw new InvalidInputException();
+                            break;
+                        }
                     case 2:
                         if (!(symbol is Predicate))
                             throw new InvalidInputException();
                         break;
                     case 3:
-                    {
-                        if (isNegation && (!(symbol is Parenthesis p) || p.Side != ParenthesisSide.Closing))
-                            throw new InvalidInputException();
+                        {
+                            if (isNegation && (!(symbol is Parenthesis p) || p.Side != ParenthesisSide.Closing))
+                                throw new InvalidInputException();
 
-                        else if (!isNegation && !(symbol is Separator))
-                            throw new InvalidInputException();
-                        break;
-                    }
+                            else if (!isNegation && !(symbol is Separator))
+                                throw new InvalidInputException();
+                            break;
+                        }
                     case 4 when !isNegation:
                         if (!(symbol is Predicate))
                             throw new InvalidInputException();
                         break;
                     case 5 when !isNegation:
-                    {
-                        if (!(symbol is Parenthesis p) || p.Side != ParenthesisSide.Closing)
-                            throw new InvalidInputException();
-                        break;
-                    }
+                        {
+                            if (!(symbol is Parenthesis p) || p.Side != ParenthesisSide.Closing)
+                                throw new InvalidInputException();
+                            break;
+                        }
                     default:
                         throw new InvalidInputException();
                 }
