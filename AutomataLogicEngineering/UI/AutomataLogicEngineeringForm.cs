@@ -68,6 +68,7 @@
             {
                 this.validInputLabel.Text = string.Empty;
                 var rootNode = NodeTreeCreator.Initialize(input);
+                var infix = rootNode.GetInfixNotation();
                 new TruthTableForm(rootNode, input, type).Show();
             }
             catch (InvalidInputException ex)

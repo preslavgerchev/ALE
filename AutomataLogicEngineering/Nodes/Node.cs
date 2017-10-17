@@ -12,6 +12,36 @@
     public sealed class Node
     {
         /// <summary>
+        /// The infix representation of the implication connective.
+        /// </summary>
+        private const string InfixImplication = "⇒";
+
+        /// <summary>
+        /// The infix representation of the biimplication connective.
+        /// </summary>
+        private const string InfixBiimplication = "⇔";
+
+        /// <summary>
+        /// The infix representation of the dinsjunction connective.
+        /// </summary>
+        private const string InfixDisjunction = "∨";
+
+        /// <summary>
+        /// The infix representation of the conjunction connective.
+        /// </summary>
+        private const string InfixConjunction = "∧";
+
+        /// <summary>
+        /// The infix representation of the nandify connective.
+        /// </summary>
+        private const string InfixNandify = "⊼";
+
+        /// <summary>
+        /// The infix representation of the negation connective.
+        /// </summary>
+        private const string InfixNegation = "¬";
+
+        /// <summary>
         /// Gets the symbol of the node.
         /// </summary>
         public Symbol Symbol { get; }
@@ -47,6 +77,68 @@
         }
 
         /// <summary>
+        /// Gets the infix notation for the given node tree, represented by the root node.
+        /// </summary>
+        /// <returns>The infix notation.</returns>
+        public string GetInfixNotation()
+        {
+            // If the root node is a single predicate, then return it's value
+            // directly.
+            if (this.Symbol is Predicate p)
+            {
+                return GetInfixNotationForPredicate(p.CharSymbol.ToString());
+            }
+
+            if (!(this.Symbol is Connective))
+            {
+                throw new Exception(
+                    $"Internal error. Cannot call GetInfixNotation(..) for symbol '{this.Symbol.CharSymbol}'.");
+            }
+
+            var symbolConn = (Connective) this.Symbol;
+
+            // In case all children of the connective are predicates this means we do not have to go
+            // further recursively and we can directly get the infix notation, using the children predicates.
+            if (this.Children.All(x => x.Symbol is Predicate))
+            {
+                var firstChild = this.Children[0].Symbol as Predicate;
+                Predicate secondChild = null;
+                if (symbolConn.Type != ConnectiveType.Not)
+                {
+                    secondChild = this.Children[1].Symbol as Predicate;
+                }
+
+                return this.GetInfixNotation(
+                    firstChild.CharSymbol.ToString(),
+                    secondChild?.CharSymbol.ToString() ?? string.Empty);
+            }
+
+            // If we have a predicate and a connective as children then we can use the value of the predicate 
+            // directly and we can recursively call GetInfixNotation(..) for the connective.
+            if (this.Children.Count(x => x.Symbol is Predicate) == 1
+                && this.Children.Count(x => x.Symbol is Connective) == 1)
+            {
+                var predicate = this.Children.Single(x => x.Symbol is Predicate).Symbol as Predicate;
+                var connective = this.Children.Single(x => x.Symbol is Connective);
+                var connectiveIndex = this.Children.IndexOf(connective);
+
+                return connectiveIndex == 0
+                    ? this.GetInfixNotation(connective.GetInfixNotation(), predicate.CharSymbol.ToString())
+                    : this.GetInfixNotation(predicate.CharSymbol.ToString(), connective.GetInfixNotation());
+            }
+
+            // Else we have a connective. If it's negation then only use the infix notation from the firt child.
+            if (symbolConn.Type == ConnectiveType.Not)
+            {
+                return this.GetInfixNotation(this.Children[0].GetInfixNotation());
+            }
+            // Else we have connectives as children. Call GetInfixNotation(..) recursively for all the children.
+            return this.GetInfixNotation(
+                this.Children[0].GetInfixNotation(),
+                this.Children[1].GetInfixNotation());
+        }
+
+        /// <summary>
         /// Recursively applies all operations on the node and its children. This method should
         /// always be called on the root node to get correct results.
         /// </summary>
@@ -64,10 +156,10 @@
             // a connective.
             if (!(this.Symbol is Connective))
             {
-                throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
+                throw new Exception($"Internal error. Cannot call Apply(..) for symbol '{this.Symbol.CharSymbol}'.");
             }
 
-            var symbolConn = (Connective)this.Symbol;
+            var symbolConn = (Connective) this.Symbol;
 
             // In case all children of the connective are predicates this means we do not have to go
             // further recursively and we can directly calculate the value of the children.
@@ -120,7 +212,7 @@
                 throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
             }
 
-            var symbolConn = (Connective)this.Symbol;
+            var symbolConn = (Connective) this.Symbol;
             switch (symbolConn.Type)
             {
                 case ConnectiveType.And:
@@ -139,5 +231,53 @@
                     throw new Exception($"Unknown connective type {symbolConn.Type} found.");
             }
         }
+
+        /// <summary>
+        /// Gets the infix notation of the given two predicates.
+        /// </summary>
+        /// <param name="firstPredicate">The first predicate.</param>
+        /// <param name="secondPredicate">The second predicate. Has default value since the 
+        /// connective type may be a NOT (~) in which case only one value is needed.</param>
+        /// <returns>The result of applying infix notation to the provided values.</returns>
+        private string GetInfixNotation(string firstPredicate, string secondPredicate = "")
+        {
+            firstPredicate = GetInfixNotationForPredicate(firstPredicate);
+            secondPredicate = GetInfixNotationForPredicate(secondPredicate);
+            // We cannot apply anything on a node that's not connective.
+            if (!(this.Symbol is Connective))
+            {
+                throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
+            }
+
+            var symbolConn = (Connective) this.Symbol;
+            switch (symbolConn.Type)
+            {
+                case ConnectiveType.And:
+                    return $"({firstPredicate} {InfixConjunction} {secondPredicate})";
+                case ConnectiveType.Or:
+                    return $"({firstPredicate} {InfixDisjunction} {secondPredicate})";
+                case ConnectiveType.Implication:
+                    return $"({firstPredicate} {InfixImplication} {secondPredicate})";
+                case ConnectiveType.Not:
+                    return $"{InfixNegation}({firstPredicate})";
+                case ConnectiveType.BiImplication:
+                    return $"({firstPredicate} {InfixBiimplication} {secondPredicate})";
+                case ConnectiveType.Nandify:
+                    return $"({firstPredicate} {InfixNandify} {secondPredicate})";
+                default:
+                    throw new Exception($"Unknown connective type {symbolConn.Type} found.");
+            }
+        }
+
+        /// <summary>
+        /// Converts the given predicate into the its infix notation. If the predicate
+        /// has a value of either '1' then "True" will be returned. Else if the predicate
+        /// has a value of '0' then "False" will be returned. Else the predicate itself
+        /// will be returned.
+        /// </summary>
+        /// <param name="predicate">The predicate.</param>
+        /// <returns>The infix notation for the predicate.</returns>
+        private string GetInfixNotationForPredicate(string predicate) =>
+            predicate = predicate == "1" ? "True" : predicate == "0" ? "False" : predicate;
     }
 }
