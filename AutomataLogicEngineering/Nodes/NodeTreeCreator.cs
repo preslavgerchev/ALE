@@ -16,14 +16,17 @@
         /// root node of the tree.
         /// </summary>
         /// <param name="input">The string input.</param>
+        /// <param name="validate">A value, indicating whether to validate the given input.</param>
         /// <returns>The root node of the tree.</returns>
-        public static Node Initialize(string input)
+        public static Node Initialize(string input, bool validate = true)
         {
             var symbols = Parser.ParseToSymbols(input);
             // By using .ToList() we can pass a reference to a different list, thus
             // keeping the symbols list intact. This is needed since validation directly
             // manipulates the contents of the provided input to verify if it is valid.
-            Validator.ValidateInput(symbols.ToList());
+            if (validate)
+                Validator.ValidateInput(symbols.ToList());
+
             return NodeTreeCreator.CreateTree(symbols);
         }
 

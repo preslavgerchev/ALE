@@ -50,6 +50,8 @@
             this.dnfHcTxtLbl = new System.Windows.Forms.Label();
             this.hcTxtLbl = new System.Windows.Forms.Label();
             this.showSimplifiedBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nandifyTextLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // inputTextBox
@@ -124,7 +126,7 @@
             // dnfLbl
             // 
             this.dnfLbl.AutoSize = true;
-            this.dnfLbl.Location = new System.Drawing.Point(21, 198);
+            this.dnfLbl.Location = new System.Drawing.Point(22, 239);
             this.dnfLbl.Name = "dnfLbl";
             this.dnfLbl.Size = new System.Drawing.Size(40, 17);
             this.dnfLbl.TabIndex = 9;
@@ -134,7 +136,7 @@
             // cnfLbl
             // 
             this.cnfLbl.AutoSize = true;
-            this.cnfLbl.Location = new System.Drawing.Point(22, 230);
+            this.cnfLbl.Location = new System.Drawing.Point(23, 271);
             this.cnfLbl.Name = "cnfLbl";
             this.cnfLbl.Size = new System.Drawing.Size(39, 17);
             this.cnfLbl.TabIndex = 10;
@@ -144,7 +146,7 @@
             // nandifyLbl
             // 
             this.nandifyLbl.AutoSize = true;
-            this.nandifyLbl.Location = new System.Drawing.Point(22, 258);
+            this.nandifyLbl.Location = new System.Drawing.Point(23, 299);
             this.nandifyLbl.Name = "nandifyLbl";
             this.nandifyLbl.Size = new System.Drawing.Size(60, 17);
             this.nandifyLbl.TabIndex = 11;
@@ -173,7 +175,7 @@
             // dnfTb
             // 
             this.dnfTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dnfTb.Location = new System.Drawing.Point(67, 198);
+            this.dnfTb.Location = new System.Drawing.Point(67, 219);
             this.dnfTb.MaximumSize = new System.Drawing.Size(250, 0);
             this.dnfTb.Multiline = true;
             this.dnfTb.Name = "dnfTb";
@@ -183,7 +185,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(67, 198);
+            this.textBox1.Location = new System.Drawing.Point(68, 239);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -192,7 +194,7 @@
             // 
             // cnfTb
             // 
-            this.cnfTb.Location = new System.Drawing.Point(67, 230);
+            this.cnfTb.Location = new System.Drawing.Point(68, 271);
             this.cnfTb.Name = "cnfTb";
             this.cnfTb.ReadOnly = true;
             this.cnfTb.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -201,7 +203,8 @@
             // 
             // nandifyTb
             // 
-            this.nandifyTb.Location = new System.Drawing.Point(88, 258);
+            this.nandifyTb.Location = new System.Drawing.Point(89, 299);
+            this.nandifyTb.Multiline = true;
             this.nandifyTb.Name = "nandifyTb";
             this.nandifyTb.ReadOnly = true;
             this.nandifyTb.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -211,7 +214,7 @@
             // infixLbl
             // 
             this.infixLbl.AutoSize = true;
-            this.infixLbl.Location = new System.Drawing.Point(22, 299);
+            this.infixLbl.Location = new System.Drawing.Point(23, 340);
             this.infixLbl.Name = "infixLbl";
             this.infixLbl.Size = new System.Drawing.Size(91, 17);
             this.infixLbl.TabIndex = 23;
@@ -221,7 +224,7 @@
             // infixTextLbl
             // 
             this.infixTextLbl.AutoSize = true;
-            this.infixTextLbl.Location = new System.Drawing.Point(119, 299);
+            this.infixTextLbl.Location = new System.Drawing.Point(120, 340);
             this.infixTextLbl.Name = "infixTextLbl";
             this.infixTextLbl.Size = new System.Drawing.Size(0, 17);
             this.infixTextLbl.TabIndex = 24;
@@ -265,12 +268,33 @@
             this.showSimplifiedBtn.UseVisualStyleBackColor = true;
             this.showSimplifiedBtn.Click += new System.EventHandler(this.showSimplifiedBtn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 199);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 17);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Nandify Hashcode:";
+            this.label1.UseMnemonic = false;
+            // 
+            // nandifyTextLbl
+            // 
+            this.nandifyTextLbl.AutoSize = true;
+            this.nandifyTextLbl.Location = new System.Drawing.Point(156, 199);
+            this.nandifyTextLbl.Name = "nandifyTextLbl";
+            this.nandifyTextLbl.Size = new System.Drawing.Size(0, 17);
+            this.nandifyTextLbl.TabIndex = 30;
+            this.nandifyTextLbl.UseMnemonic = false;
+            // 
             // AutomataLogicEngineeringForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1858, 582);
+            this.Controls.Add(this.nandifyTextLbl);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.showSimplifiedBtn);
             this.Controls.Add(this.hcTxtLbl);
             this.Controls.Add(this.dnfHcTxtLbl);
@@ -297,6 +321,7 @@
             this.Name = "AutomataLogicEngineeringForm";
             this.Text = "Automata Logic Engineering";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.AutomataLogicEngineeringForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,6 +351,8 @@
         private System.Windows.Forms.Label dnfHcTxtLbl;
         private System.Windows.Forms.Label hcTxtLbl;
         private System.Windows.Forms.Button showSimplifiedBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label nandifyTextLbl;
     }
 }
 

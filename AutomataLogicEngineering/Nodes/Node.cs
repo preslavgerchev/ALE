@@ -139,6 +139,68 @@
         }
 
         /// <summary>
+        /// Gets the infix notation for the given node tree, represented by the root node.
+        /// </summary>
+        /// <returns>The infix notation.</returns>
+        public string Nandify()
+        {
+            // If the root node is a single predicate, then return it's value
+            // directly.
+            if (this.Symbol is Predicate p)
+            {
+                return p.CharSymbol.ToString();
+            }
+
+            if (!(this.Symbol is Connective))
+            {
+                throw new Exception(
+                    $"Internal error. Cannot call Nandify(..) for symbol '{this.Symbol.CharSymbol}'.");
+            }
+
+            var symbolConn = (Connective)this.Symbol;
+
+            // In case all children of the connective are predicates this means we do not have to go
+            // further recursively and we can directly get the infix notation, using the children predicates.
+            if (this.Children.All(x => x.Symbol is Predicate))
+            {
+                var firstChild = this.Children[0].Symbol as Predicate;
+                Predicate secondChild = null;
+                if (symbolConn.Type != ConnectiveType.Not)
+                {
+                    secondChild = this.Children[1].Symbol as Predicate;
+                }
+
+                return this.Nandify(
+                    firstChild.CharSymbol.ToString(),
+                    secondChild?.CharSymbol.ToString() ?? string.Empty);
+            }
+
+            // If we have a predicate and a connective as children then we can use the value of the predicate 
+            // directly and we can recursively call GetInfixNotation(..) for the connective.
+            if (this.Children.Count(x => x.Symbol is Predicate) == 1
+                && this.Children.Count(x => x.Symbol is Connective) == 1)
+            {
+                var predicate = this.Children.Single(x => x.Symbol is Predicate).Symbol as Predicate;
+                var connective = this.Children.Single(x => x.Symbol is Connective);
+                var connectiveIndex = this.Children.IndexOf(connective);
+
+                return connectiveIndex == 0
+                    ? this.Nandify(connective.Nandify(), predicate.CharSymbol.ToString())
+                    : this.Nandify(predicate.CharSymbol.ToString(), connective.Nandify());
+            }
+
+            // Else we have a connective. If it's negation then only use the infix notation from the firt child.
+            if (symbolConn.Type == ConnectiveType.Not)
+            {
+                return this.Nandify(this.Children[0].Nandify());
+            }
+            // Else we have connectives as children. Call Nandify(..) recursively for all the children.
+            return this.Nandify(
+                this.Children[0].Nandify(),
+                this.Children[1].Nandify());
+        }
+
+        /// <summary>
         /// Recursively applies all operations on the node and its children. This method should
         /// always be called on the root node to get correct results.
         /// </summary>
@@ -264,6 +326,42 @@
                     return $"({firstPredicate} {InfixBiimplication} {secondPredicate})";
                 case ConnectiveType.Nandify:
                     return $"({firstPredicate} {InfixNandify} {secondPredicate})";
+                default:
+                    throw new Exception($"Unknown connective type {symbolConn.Type} found.");
+            }
+        }
+
+        /// <summary>
+        /// Gets the infix notation of the given two predicates.
+        /// </summary>
+        /// <param name="firstPredicate">The first predicate.</param>
+        /// <param name="secondPredicate">The second predicate. Has default value since the 
+        /// connective type may be a NOT (~) in which case only one value is needed.</param>
+        /// <returns>The result of applying infix notation to the provided values.</returns>
+        private string Nandify(string firstPredicate, string secondPredicate = "")
+        {
+            // We cannot apply anything on a node that's not connective.
+            if (!(this.Symbol is Connective))
+            {
+                throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
+            }
+
+            var symbolConn = (Connective)this.Symbol;
+            switch (symbolConn.Type)
+            {
+                case ConnectiveType.And:
+                    return $"%(%({firstPredicate},{secondPredicate}),%({firstPredicate},{secondPredicate}))";
+                case ConnectiveType.Or:
+                    return $"%(%({firstPredicate},{firstPredicate}),%({secondPredicate},{secondPredicate}))";
+                case ConnectiveType.Implication:
+                    return $"% ({firstPredicate},% ({secondPredicate}, {secondPredicate}))";
+                case ConnectiveType.Not:
+                    return $"%({firstPredicate},{firstPredicate})";
+                case ConnectiveType.BiImplication:
+                    return $"%(%(%({firstPredicate},{firstPredicate}),%({secondPredicate},{secondPredicate}))" +
+                           $",%({firstPredicate},{secondPredicate}))";
+                case ConnectiveType.Nandify:
+                    return $"%({firstPredicate},{secondPredicate})";
                 default:
                     throw new Exception($"Unknown connective type {symbolConn.Type} found.");
             }

@@ -63,12 +63,23 @@
                 this.hcTextLbl.Text = truthTable.HexadecimalResult;
                 var infix = rootNode.GetInfixNotation();
                 this.infixTextLbl.Text = infix;
+                try
+                {
+                    var nandifyInput = rootNode.Nandify();
+                    this.nandifyTb.Text = nandifyInput;
+                    var nandifyNode = NodeTreeCreator.Initialize(nandifyInput, false);
+                    this.nandifyTextLbl.Text = TruthTableGenerator.GenerateTruthTable(nandifyNode).HexadecimalResult;
+                }
+                catch (OutOfMemoryException)
+                {
+                    this.nandifyTb.Text = @"Out of memory, cannot nandify.";
+                    this.nandifyTextLbl.Text = @"Out of memory, cannot nandify.";
+                }
                 if (truthTable.CanBeConvertedToDnf)
                 {
                     var dnfInput = truthTable.ToDnfForm();
-                    var dnfNode = NodeTreeCreator.Initialize(dnfInput);
-                    var dnfTable = TruthTableGenerator.GenerateTruthTable(dnfNode);
-                    this.dnfHcTxtLbl.Text = dnfTable.HexadecimalResult;
+                    var dnfNode = NodeTreeCreator.Initialize(dnfInput, false);
+                    this.dnfHcTxtLbl.Text = TruthTableGenerator.GenerateTruthTable(dnfNode).HexadecimalResult;
                     this.textBox1.Text = dnfInput;
                 }
                 else
@@ -79,9 +90,8 @@
                 if (truthTable.CanBeConvertedToCnf)
                 {
                     var cnfInput = truthTable.ToCnfForm();
-                    var cnfNode = NodeTreeCreator.Initialize(cnfInput);
-                    var cnfTable = TruthTableGenerator.GenerateTruthTable(cnfNode);
-                    this.cnfHcTxtLbl.Text = cnfTable.HexadecimalResult;
+                    var cnfNode = NodeTreeCreator.Initialize(cnfInput ,false);
+                    this.cnfHcTxtLbl.Text = TruthTableGenerator.GenerateTruthTable(cnfNode).HexadecimalResult;
                     this.cnfTb.Text = cnfInput;
                 }
                 else
@@ -100,6 +110,11 @@
         private void showSimplifiedBtn_Click(object sender, EventArgs e)
         {
             this.InitializeTable(simplified: true);
+        }
+
+        private void AutomataLogicEngineeringForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

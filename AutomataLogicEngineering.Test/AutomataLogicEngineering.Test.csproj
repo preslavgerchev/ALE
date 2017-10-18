@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HexadecimalTests.cs" />
+    <Compile Include="NandifyTests.cs" />
     <Compile Include="InfixNotationTests.cs" />
     <Compile Include="NodeTreeCreatorTests.cs" />
     <Compile Include="BInaryToHashcodeTests.cs" />
