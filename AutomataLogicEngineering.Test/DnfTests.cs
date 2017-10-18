@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace AutomataLogicEngineering.Test
+﻿namespace AutomataLogicEngineering.Test
 {
     using System.Collections.Generic;
     using System.IO;
