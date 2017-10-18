@@ -29,5 +29,16 @@
                 Assert.AreEqual(pair.Value, pair.Key.ToHexString());
             }
         }
+
+        /// <summary>
+        /// A test method, verifying that converting binary to hexadecimal throws exception if the
+        /// binary input is invalid.
+        /// </summary>
+        [TestMethod]
+        public void BinaryToHexadecimal_Invalid_Test()
+        {
+            var invalidBinary = "1000111A";
+            TestExtensions.Throws<System.Exception>(() => invalidBinary.ToHexString());
+        }
     }
 }

@@ -31,7 +31,11 @@
                 rows.Add(new TruthTableRow(rowList));
             }
 
-            var table = new TruthTable(rows);
+            var header = new TruthTableHeader(allPredicates
+                .Select(x => x.CharSymbol.ToString())
+                .Concat(new[] { "Result" }).ToList());
+
+            var table = new TruthTable(header, rows);
             table.Calculate(node);
             return table;
         }

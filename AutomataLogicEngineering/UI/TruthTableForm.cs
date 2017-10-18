@@ -6,23 +6,22 @@
 
     public partial class TruthTableForm : Form
     {
-        public TruthTableForm(Node rootNode, string input, bool simplified)
+        public TruthTableForm(Node rootNode, bool simplified)
         {
             InitializeComponent();
-
             var truthTable = TruthTableGenerator.GenerateTruthTable(rootNode);
-            var allPredicates = TruthTableGenerator.GetAllPredicates(rootNode);
 
-            this.truthTableLbl.Text = @"Truth table";
-            foreach (var predicate in allPredicates)
-            {
-                this.truthTableView.Columns.Add(predicate.ToString(), predicate.ToString());
-            }
-            this.truthTableView.Columns.Add("Result", input);
             if (simplified)
             {
                 truthTable = truthTable.Simplify();
             }
+
+            this.truthTableLbl.Text = @"Truth table";
+            foreach (var header in truthTable.Header.Headers)
+            {
+                this.truthTableView.Columns.Add(header, header);
+            }
+
             for (var i = 0; i < truthTable.Rows.Count; i++)
             {
                 var row = truthTable.Rows[i];
@@ -31,10 +30,6 @@
                 {
                     this.truthTableView.Rows[i].Cells[j].Value = row.Cells[j].SymbolInCell;
                 }
-            }
-            for (var i = 0; i < truthTable.Rows.Count; i++)
-            {
-                var row = truthTable.Rows[i];
                 this.truthTableView.Rows[i].Cells["Result"].Value = row.ResultRepresentation;
             }
             this.truthTableView.Columns["Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

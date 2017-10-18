@@ -17,6 +17,11 @@
         public List<TruthTableRow> Rows { get; }
 
         /// <summary>
+        /// Gets the truth table header.
+        /// </summary>
+        public TruthTableHeader Header { get; }
+        
+        /// <summary>
         /// Gets the hexadecimal representation of the result.
         /// </summary>
         public string HexadecimalResult =>
@@ -38,9 +43,11 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="TruthTable"/> class.
         /// </summary>
+        /// <param name="header">The truth table header.</param>
         /// <param name="rows">The truth table rows.</param>
-        public TruthTable(List<TruthTableRow> rows)
+        public TruthTable(TruthTableHeader header, List<TruthTableRow> rows)
         {
+            this.Header = header;
             this.Rows = rows;
         }
 
@@ -140,7 +147,8 @@
                     filteredRows.Add(addedRow);
                 }
             }
-            return new TruthTable(filteredRows);
+
+            return new TruthTable(this.Header, filteredRows);
         }
 
         /// <summary>

@@ -23,7 +23,7 @@
                 .Where(x => x is Parenthesis)
                 .Cast<Parenthesis>()
                 .ToList();
-
+                
             if (!symbols.Any())
             {
                 throw new InvalidInputException();

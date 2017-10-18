@@ -1,14 +1,12 @@
-﻿using System;
-using System.Diagnostics;
-using AutomataLogicEngineering.TruthTable;
-
-namespace AutomataLogicEngineering.Test
+﻿namespace AutomataLogicEngineering.Test
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Newtonsoft.Json;
     using Nodes;
+    using TruthTable;
 
     /// <summary>
     /// A test class for <see cref="Node.GetInfixNotation"/>.
@@ -17,9 +15,15 @@ namespace AutomataLogicEngineering.Test
     public class NandifyTests
     {
         /// <summary>
-        /// A test method, verifying that the infix notation for a given propositonal input is as expected.
+        /// A test method, verifying that nandify-ing the input works as expected.
         /// </summary>
+        /// <remarks>
+        /// Note that due to the nature of how nandify works this test takes an enormous amount of time 
+        /// (over an hour) to be completed. As such it's disabled by default. Removed the Ignore attribute 
+        /// to run it.
+        /// </remarks>
         [TestMethod]
+        [Ignore]
         public void Nandify_Test()
         {
             Dictionary<string, string> collection;
@@ -28,22 +32,19 @@ namespace AutomataLogicEngineering.Test
                 var json = r.ReadToEnd();
                 collection = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
             }
-            var line = 0;
             foreach (var hexPair in collection)
             {
                 try
                 {
-                    line++;
                     var node = NodeTreeCreator.Initialize(hexPair.Key);
                     var nandify = node.Nandify();
                     var nandifyNode = NodeTreeCreator.Initialize(nandify, false);
                     var hashCode = TruthTableGenerator.GenerateTruthTable(nandifyNode).HexadecimalResult;
                     Assert.AreEqual(hexPair.Value, hashCode);
                 }
-                catch (Exception e)
+                catch (OutOfMemoryException)
                 {
-                    Debug.WriteLine(e.GetType());
-                    Debug.WriteLine(line);
+                    // Do nothing with the OutOfMemoryException as it's expected for long inputs.
                 }
             }
         }

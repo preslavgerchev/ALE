@@ -51,6 +51,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CnfTests.cs" />
+    <Compile Include="DnfTests.cs" />
     <Compile Include="HexadecimalTests.cs" />
     <Compile Include="NandifyTests.cs" />
     <Compile Include="InfixNotationTests.cs" />

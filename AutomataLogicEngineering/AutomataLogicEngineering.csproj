@@ -48,6 +48,7 @@
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Exceptions\InvalidInputException.cs" />
     <Compile Include="Common\IdGenerator.cs" />
+    <Compile Include="TruthTable\TruthTableHeader.cs" />
     <Compile Include="UI\AutomataLogicEngineeringForm.cs">
       <SubType>Form</SubType>
     </Compile>
