@@ -22,7 +22,7 @@
                         "O)),P),Q),R),%(S,|(~(T),~(>(=(>(>(~(~(U)),V),W),X),Y))))))))),Z))),0)),1),b))";
             var symbols = Parser.ParseToSymbols(input);
             var nodeGraphIds = symbols.Select(x => x.NodeGraphId).ToList();
-            // Verify there are no duplicate in the node graph ids.
+            // Verify there are no duplicates in the node graph ids.
             Assert.AreEqual(nodeGraphIds.Count, nodeGraphIds.Distinct().Count());
             // Verify that all IDs are assigned in order, comparing the current symbol to the previous one.
             Assert.IsTrue(symbols.Skip(1).Zip(symbols.ToList(), (x, y) => new { X = x, Y = y })
@@ -40,7 +40,7 @@
             var symbols = Parser.ParseToSymbols(input);
             var predicates = symbols.Where(x => x is Predicate).ToList();
             var nodeGraphIds = symbols.Select(x => x.NodeGraphId).ToList();
-            // Verify there are no duplicate in the node graph ids.
+            // Verify there are no duplicates in the node graph ids.
             Assert.AreEqual(nodeGraphIds.Count, nodeGraphIds.Distinct().Count());
             Assert.IsTrue(predicates.Skip(1).Zip(predicates.ToList(), (x, y) => new { X = x, Y = y })
                 .All(x => x.X.Id == x.Y.Id));

@@ -12,6 +12,11 @@
     public class TruthTable
     {
         /// <summary>
+        /// Indicates whether the current truth table has been simplified or not.
+        /// </summary>
+        private bool hasBeenSimplified = false;
+
+        /// <summary>
         /// Gets the list of truth table rows.
         /// </summary>
         public List<TruthTableRow> Rows { get; }
@@ -20,7 +25,7 @@
         /// Gets the truth table header.
         /// </summary>
         public TruthTableHeader Header { get; }
-        
+
         /// <summary>
         /// Gets the hexadecimal representation of the result.
         /// </summary>
@@ -58,7 +63,7 @@
         public TruthTable Simplify()
         {
             var simplifiedTable = this.SimplifyTable();
-            while (simplifiedTable.CanBeSimplified())
+            while (simplifiedTable.hasBeenSimplified)
             {
                 simplifiedTable = simplifiedTable.SimplifyTable();
             }
@@ -115,23 +120,19 @@
         }
 
         /// <summary>
-        /// Returns a value indicating whether the truth table can be simplified.
-        /// </summary>
-        /// <returns>True if the table can be simplified; otherwise - false.</returns>
-        private bool CanBeSimplified() => this.Rows.Count > this.SimplifyTable().Rows.Count;
-
-        /// <summary>
         /// Simplifies the given truth table and returns a new truth table.
         /// </summary>
         /// <returns>The new, simplified truth table.</returns>
         private TruthTable SimplifyTable()
         {
+            var simplified = false;
             var newRows = new List<TruthTableRow>();
             for (var i = 0; i < this.Rows.Count; i++)
             {
                 var simplifiedRows = this.SimplifyForRow(i);
                 if (simplifiedRows.Any())
                 {
+                    simplified = true;
                     newRows.AddRange(simplifiedRows);
                 }
                 else
@@ -148,7 +149,7 @@
                 }
             }
 
-            return new TruthTable(this.Header, filteredRows);
+            return new TruthTable(this.Header, filteredRows) { hasBeenSimplified = simplified };
         }
 
         /// <summary>

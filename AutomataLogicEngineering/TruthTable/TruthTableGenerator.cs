@@ -20,7 +20,7 @@
         {
             var rows = new List<TruthTableRow>();
             var allPredicates = GetAllPredicates(node);
-            var possibleCombinations = 1 << allPredicates.Count;
+            var possibleCombinations = allPredicates.Any() ? 1 << allPredicates.Count : 0;
             for (var i = 0; i < possibleCombinations; i++)
             {
                 var binaryRepresentation = Convert.ToString(i, 2).PadLeft(allPredicates.Count, '0');
@@ -31,10 +31,12 @@
                 rows.Add(new TruthTableRow(rowList));
             }
 
-            var header = new TruthTableHeader(allPredicates
-                .Select(x => x.ToString())
-                .Concat(new[] { "Result" })
-                .ToList());
+            var header = new TruthTableHeader(
+                allPredicates.Any()
+                ? allPredicates.Select(x => x.ToString())
+                    .Concat(new[] {"Result"})
+                    .ToList()
+                : new List<string>());
 
             var table = new TruthTable(header, rows);
             table.Calculate(node);

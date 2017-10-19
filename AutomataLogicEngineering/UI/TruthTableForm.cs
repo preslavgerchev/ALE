@@ -32,7 +32,8 @@
                 }
                 this.truthTableView.Rows[i].Cells["Result"].Value = row.ResultRepresentation;
             }
-            this.truthTableView.Columns["Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            if (this.truthTableView.Columns["Result"] != null)
+                this.truthTableView.Columns["Result"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void TruthTableForm_FormClosing(object sender, FormClosingEventArgs e)
