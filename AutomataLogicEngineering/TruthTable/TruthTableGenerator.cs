@@ -33,7 +33,8 @@
 
             var header = new TruthTableHeader(allPredicates
                 .Select(x => x.ToString())
-                .Concat(new[] { "Result" }).ToList());
+                .Concat(new[] { "Result" })
+                .ToList());
 
             var table = new TruthTable(header, rows);
             table.Calculate(node);
@@ -45,7 +46,7 @@
         /// </summary>
         /// <param name="node">The root node.</param>
         /// <returns>A list of all predicates in the root node and its children.</returns>
-        public static List<Predicate> GetAllPredicates(Node node)
+        private static List<Predicate> GetAllPredicates(Node node)
         {
             var predicatesList = new List<Predicate>();
             FindAndAddPredicates(node, predicatesList);

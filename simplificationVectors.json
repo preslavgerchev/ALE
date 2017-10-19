@@ -1,0 +1,1323 @@
+{
+  ">(0,R)": {
+    "TableHeaders": [
+      "R",
+      "Result"
+    ],
+    "Predicates": [
+      "R"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 1
+  },
+  "=(Q,S)": {
+    "TableHeaders": [
+      "Q",
+      "S",
+      "Result"
+    ],
+    "Predicates": [
+      "Q",
+      "S"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0",
+          "0"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "0",
+          "1"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 2,
+        "Values": [
+          "1",
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 3,
+        "Values": [
+          "1",
+          "1"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 4,
+    "NrOfPredicates": 2
+  },
+  "0": {
+    "TableHeaders": [],
+    "Predicates": [],
+    "DataRows": [],
+    "NrOfDataRows": 0,
+    "NrOfPredicates": 0
+  },
+  "&(~(S),>(=(>(%(=(R,X),Q),Q),P),X))": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0",
+          "0",
+          "*",
+          "*",
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "0",
+          "1"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 2,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "1",
+          "*"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 20,
+        "Values": [
+          "0",
+          "1",
+          "*",
+          "0",
+          "*"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 34,
+        "Values": [
+          "1",
+          "0",
+          "*",
+          "0",
+          "*"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 48,
+        "Values": [
+          "1",
+          "1",
+          "*",
+          "*",
+          "0"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 6,
+    "NrOfPredicates": 5
+  },
+  "~(|(S,0))": {
+    "TableHeaders": [
+      "S",
+      "Result"
+    ],
+    "Predicates": [
+      "S"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  },
+  "|(|(%(~(&(Q,S)),X),1),R)": {
+    "TableHeaders": [
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 4
+  },
+  "|(S,|(R,=(&(R,P),%(P,~(Q)))))": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0",
+          "*",
+          "0",
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "1"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 4,
+        "Values": [
+          "*",
+          "*",
+          "1",
+          "*"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 4,
+        "Values": [
+          "*",
+          "1",
+          "0",
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 15,
+        "Values": [
+          "1",
+          "0",
+          "*",
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 5,
+    "NrOfPredicates": 4
+  },
+  "&(~(&(>(&(X,|(&(~(&(>(|(=(=(|(&(=(%(0,%(S,>(>(~(>(>(%(%(=(0,R),&(%(1,X),&(P,|(R,&(~(&(P,>(=(~(%(|(P,S),&(P,S))),R),=(>(Q,~(~(>(S,R)))),Q)))),0))))),0),X),Q)),S),R))),1),P),Q),Q),R),0),R),X)),P),1)),1),0)),1)": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 5
+  },
+  "R": {
+    "TableHeaders": [
+      "R",
+      "Result"
+    ],
+    "Predicates": [
+      "R"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  },
+  "&(0,&(0,~(R)))": {
+    "TableHeaders": [
+      "R",
+      "Result"
+    ],
+    "Predicates": [
+      "R"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 1
+  },
+  "|(S,&(|(R,|(S,>(>(&(=(0,%(1,~(~(%(1,|(>(%(>(S,Q),&(%(X,|(1,&(Q,>(P,%(X,&(R,|(1,R))))))),R)),S),S)))))),0),S),Q))),0))": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "0",
+          "*"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 5,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "1",
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 5
+  },
+  "&(0,P)": {
+    "TableHeaders": [
+      "P",
+      "Result"
+    ],
+    "Predicates": [
+      "P"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 1
+  },
+  "X": {
+    "TableHeaders": [
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  },
+  "P": {
+    "TableHeaders": [
+      "P",
+      "Result"
+    ],
+    "Predicates": [
+      "P"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  },
+  "~(X)": {
+    "TableHeaders": [
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  },
+  "Q": {
+    "TableHeaders": [
+      "Q",
+      "Result"
+    ],
+    "Predicates": [
+      "Q"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  },
+  "1": {
+    "TableHeaders": [],
+    "Predicates": [],
+    "DataRows": [],
+    "NrOfDataRows": 0,
+    "NrOfPredicates": 0
+  },
+  "=(Q,|(1,Q))": {
+    "TableHeaders": [
+      "Q",
+      "Result"
+    ],
+    "Predicates": [
+      "Q"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  },
+  "~(=(Q,X))": {
+    "TableHeaders": [
+      "Q",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "Q",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0",
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "0",
+          "1"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 2,
+        "Values": [
+          "1",
+          "0"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 3,
+        "Values": [
+          "1",
+          "1"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 4,
+    "NrOfPredicates": 2
+  },
+  "&(%(~(%(%(Q,%(&(R,S),&(=(&(P,&(>(|(R,R),X),Q)),=(S,>(>(%(~(&(=(0,1),Q)),S),1),X))),0))),Q)),X),1)": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 5
+  },
+  "&(>(|(~(P),R),0),>(P,P))": {
+    "TableHeaders": [
+      "P",
+      "R",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "R"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0",
+          "*"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "*",
+          "1"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 2,
+        "Values": [
+          "1",
+          "0"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 3,
+    "NrOfPredicates": 2
+  },
+  "%(|(|(S,|(|(%(&(>(|(|(X,%(=(S,X),>(S,%(P,Q)))),R),X),&(X,0)),%(=(|(S,R),Q),~(R))),%(%(%(X,1),~(|(%(>(~(~(0)),>(X,~(=(R,S)))),X),>(P,P)))),>(&(~(&(>(&(%(Q,R),X),=(~(%(0,S)),%(%(R,1),>(S,=(0,=(=(S,>(R,|(=(>(|(|(R,&(=(R,R),S)),1),P),P),0))),1)))))),Q)),Q),R))),P)),R),0)": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 5
+  },
+  "~(R)": {
+    "TableHeaders": [
+      "R",
+      "Result"
+    ],
+    "Predicates": [
+      "R"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  },
+  "|(%(0,|(Q,>(>(0,1),S))),&(|(X,0),1))": {
+    "TableHeaders": [
+      "Q",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "Q",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 3
+  },
+  "&(~(~(%(>(=(&(%(&(&(%(>(=(>(R,|(=(>(~(|(|(~(&(S,|(=(~(Q),1),1))),>(%(%(>(Q,S),1),=(0,R)),Q)),1)),1),X),0)),S),Q),Q),1),S),S),X),R),Q),R))),1)": {
+    "TableHeaders": [
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "0",
+          "*",
+          "*"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "0",
+          "*",
+          "0",
+          "1"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 9,
+        "Values": [
+          "*",
+          "1",
+          "*",
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 11,
+        "Values": [
+          "*",
+          "1",
+          "1",
+          "*"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 18,
+        "Values": [
+          "1",
+          "1",
+          "*",
+          "*"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 5,
+    "NrOfPredicates": 4
+  },
+  "~(|(=(=(%(%(0,>(~(=(&(1,>(Q,~(P))),>(1,&(S,1)))),P)),>(P,R)),1),P),P))": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 4
+  },
+  "&(%(&(Q,1),=(|(S,=(R,&(&(|(=(0,>(%(Q,>(|(0,=(X,%(Q,S))),=(R,=(~(&(0,|(>(|(>(=(%(>(&(X,%(0,>(&(~(0),|(~(R),S)),1))),P),X),1),X),R),1),S))),R)))),P)),R),X),0))),Q)),R)": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "0",
+          "*",
+          "*"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 13,
+        "Values": [
+          "*",
+          "0",
+          "1",
+          "*",
+          "*"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 14,
+        "Values": [
+          "*",
+          "*",
+          "1",
+          "0",
+          "*"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 25,
+        "Values": [
+          "*",
+          "1",
+          "*",
+          "1",
+          "*"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 4,
+    "NrOfPredicates": 5
+  },
+  "%(P,>(%(1,S),&(>(P,|(~(>(|(=(|(Q,1),|(%(&(1,&(%(R,&(%(>(|(~(=(>(P,0),&(|(S,|(X,R)),P))),=(X,S)),%(%(=(>(0,Q),&(0,0)),P),R)),%(Q,P)),S)),>(1,P))),0),0)),0),R)),P)),Q)))": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0",
+          "*",
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "*",
+          "0",
+          "*",
+          "0",
+          "*"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 29,
+        "Values": [
+          "1",
+          "*",
+          "*",
+          "1",
+          "*"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 34,
+        "Values": [
+          "1",
+          "1",
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 4,
+    "NrOfPredicates": 5
+  },
+  "|(|(~(~(%(R,>(&(&(~(X),R),|(&(%(%(|(|(%(|(|(X,=(|(P,>(~(%(0,P)),1)),S)),&(P,%(1,0))),~(&(=(~(R),P),P))),&(S,Q)),S),%(=(0,|(%(S,=(Q,>(R,%(|(Q,>(1,S)),S)))),=(&(0,P),=(R,|(&(1,1),0))))),0)),X),1),X)),R)))),P),1)": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 5
+  },
+  "~(Q)": {
+    "TableHeaders": [
+      "Q",
+      "Result"
+    ],
+    "Predicates": [
+      "Q"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  },
+  "|(Q,|(P,|(0,%(0,>(>(&(&(>(=(|(>(~(S),%(&(=(R,S),1),&(Q,R))),P),>(>(>(S,|(X,R)),S),R)),Q),X),X),X),R)))))": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 5
+  },
+  "&(P,~(>(>(R,|(%(R,~(P)),&(X,|(P,0)))),1)))": {
+    "TableHeaders": [
+      "P",
+      "R",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "R",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 3
+  },
+  "%(~(&(X,X)),%(=(R,R),=(R,=(X,%(X,>(&(X,S),=(1,S)))))))": {
+    "TableHeaders": [
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0",
+          "*",
+          "*"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 2,
+        "Values": [
+          "*",
+          "*",
+          "1"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 4,
+        "Values": [
+          "1",
+          "*",
+          "0"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 3,
+    "NrOfPredicates": 3
+  },
+  "=(~(Q),~(&(=(&(P,>(%(P,=(&(1,0),%(X,1))),X)),P),X)))": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "0",
+          "0"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "*",
+          "0",
+          "1"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 2,
+        "Values": [
+          "*",
+          "1",
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 3,
+        "Values": [
+          "*",
+          "1",
+          "1"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 4,
+    "NrOfPredicates": 3
+  },
+  ">(Q,1)": {
+    "TableHeaders": [
+      "Q",
+      "Result"
+    ],
+    "Predicates": [
+      "Q"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 1
+  },
+  "~(>(R,|(&(0,>(=(&(=(|(%(P,P),S),%(|(~(R),R),S)),%(&(X,P),P)),~(&(Q,~(R)))),S)),R)))": {
+    "TableHeaders": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X",
+      "Result"
+    ],
+    "Predicates": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "X"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "*",
+          "*",
+          "*",
+          "*",
+          "*"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 1,
+    "NrOfPredicates": 5
+  },
+  "~(S)": {
+    "TableHeaders": [
+      "S",
+      "Result"
+    ],
+    "Predicates": [
+      "S"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": true
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": false
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  },
+  "S": {
+    "TableHeaders": [
+      "S",
+      "Result"
+    ],
+    "Predicates": [
+      "S"
+    ],
+    "DataRows": [
+      {
+        "RowNum": 0,
+        "Values": [
+          "0"
+        ],
+        "Result": false
+      },
+      {
+        "RowNum": 1,
+        "Values": [
+          "1"
+        ],
+        "Result": true
+      }
+    ],
+    "NrOfDataRows": 2,
+    "NrOfPredicates": 1
+  }
+}
