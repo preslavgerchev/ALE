@@ -1,5 +1,4 @@
-﻿
-namespace AutomataLogicEngineering.Test
+﻿namespace AutomataLogicEngineering.Test
 {
     using System;
     using System.Collections.Generic;
