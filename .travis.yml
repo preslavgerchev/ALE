@@ -1,8 +1,4 @@
 language: csharp
 solution: "./AutomataLogicEngineering.sln"
-install:
-  - nuget restore AutomataLogicEngineering.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script:
 - msbuild /p:Configuration=Release AutomataLogicEngineering.sln
-- mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe AutomataLogicEngineering.Test/bin/Release/AutomataLogicEngineering.Test.dll
