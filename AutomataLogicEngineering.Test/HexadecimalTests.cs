@@ -1,10 +1,13 @@
-﻿namespace AutomataLogicEngineering.Test
+﻿
+namespace AutomataLogicEngineering.Test
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Newtonsoft.Json;
     using Nodes;
+    using Symbols;
     using TruthTable;
 
     /// <summary>
@@ -31,6 +34,28 @@
                 var node = NodeTreeCreator.Initialize(hexPair.Key);
                 var truthTable = TruthTableGenerator.GenerateTruthTable(node);
                 Assert.AreEqual(hexPair.Value, truthTable.HexadecimalResult);
+            }
+        }
+
+        /// <summary>
+        /// A test method, verifying that trying to call <see cref="Node.Apply"/> on a symbol that is
+        /// NOT a connective or a predicate will thrown an exception.
+        /// </summary>
+        [TestMethod]
+        public void Apply_InvalidSymbols_Test()
+        {
+            var invalidNodes = new List<Node>()
+            {
+                new Node(new Separator(',', 1, 1)),
+                new Node(new Parenthesis('(', 1, 1, ParenthesisSide.Opening)),
+                new Node(new Parenthesis(')', 1, 1, ParenthesisSide.Closing)),
+            };
+
+            foreach (var invalidNode in invalidNodes)
+            {
+                TestExtensions.Throws<Exception>(
+                    () => invalidNode.Apply(),
+                    $"Internal error. Cannot call Apply(..) for symbol '{invalidNode.Symbol.CharSymbol}'.");
             }
         }
     }

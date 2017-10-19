@@ -56,18 +56,18 @@
             // 
             // inputTextBox
             // 
-            this.inputTextBox.Location = new System.Drawing.Point(12, 12);
-            this.inputTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.inputTextBox.Location = new System.Drawing.Point(9, 10);
+            this.inputTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.Size = new System.Drawing.Size(1834, 22);
+            this.inputTextBox.Size = new System.Drawing.Size(1376, 20);
             this.inputTextBox.TabIndex = 0;
             // 
             // generateTreeBtn
             // 
-            this.generateTreeBtn.Location = new System.Drawing.Point(15, 80);
-            this.generateTreeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.generateTreeBtn.Location = new System.Drawing.Point(11, 65);
+            this.generateTreeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.generateTreeBtn.Name = "generateTreeBtn";
-            this.generateTreeBtn.Size = new System.Drawing.Size(117, 23);
+            this.generateTreeBtn.Size = new System.Drawing.Size(88, 19);
             this.generateTreeBtn.TabIndex = 1;
             this.generateTreeBtn.Text = "Generate tree";
             this.generateTreeBtn.UseVisualStyleBackColor = true;
@@ -76,18 +76,17 @@
             // validInputLabel
             // 
             this.validInputLabel.AutoSize = true;
-            this.validInputLabel.Location = new System.Drawing.Point(17, 44);
-            this.validInputLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.validInputLabel.Location = new System.Drawing.Point(13, 36);
             this.validInputLabel.Name = "validInputLabel";
-            this.validInputLabel.Size = new System.Drawing.Size(0, 17);
+            this.validInputLabel.Size = new System.Drawing.Size(0, 13);
             this.validInputLabel.TabIndex = 4;
             // 
             // showTruthTableBtn
             // 
-            this.showTruthTableBtn.Location = new System.Drawing.Point(405, 80);
-            this.showTruthTableBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.showTruthTableBtn.Location = new System.Drawing.Point(304, 65);
+            this.showTruthTableBtn.Margin = new System.Windows.Forms.Padding(2);
             this.showTruthTableBtn.Name = "showTruthTableBtn";
-            this.showTruthTableBtn.Size = new System.Drawing.Size(169, 23);
+            this.showTruthTableBtn.Size = new System.Drawing.Size(127, 19);
             this.showTruthTableBtn.TabIndex = 5;
             this.showTruthTableBtn.Text = "Show truth table";
             this.showTruthTableBtn.UseVisualStyleBackColor = true;
@@ -96,9 +95,10 @@
             // hcLbl
             // 
             this.hcLbl.AutoSize = true;
-            this.hcLbl.Location = new System.Drawing.Point(22, 121);
+            this.hcLbl.Location = new System.Drawing.Point(16, 98);
+            this.hcLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hcLbl.Name = "hcLbl";
-            this.hcLbl.Size = new System.Drawing.Size(76, 17);
+            this.hcLbl.Size = new System.Drawing.Size(59, 13);
             this.hcLbl.TabIndex = 6;
             this.hcLbl.Text = "Hashcode:";
             this.hcLbl.UseMnemonic = false;
@@ -106,9 +106,10 @@
             // dnfHcLbl
             // 
             this.dnfHcLbl.AutoSize = true;
-            this.dnfHcLbl.Location = new System.Drawing.Point(21, 146);
+            this.dnfHcLbl.Location = new System.Drawing.Point(16, 119);
+            this.dnfHcLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dnfHcLbl.Name = "dnfHcLbl";
-            this.dnfHcLbl.Size = new System.Drawing.Size(108, 17);
+            this.dnfHcLbl.Size = new System.Drawing.Size(84, 13);
             this.dnfHcLbl.TabIndex = 7;
             this.dnfHcLbl.Text = "DNF Hashcode:";
             this.dnfHcLbl.UseMnemonic = false;
@@ -116,9 +117,10 @@
             // cnfHcLbl
             // 
             this.cnfHcLbl.AutoSize = true;
-            this.cnfHcLbl.Location = new System.Drawing.Point(21, 171);
+            this.cnfHcLbl.Location = new System.Drawing.Point(16, 139);
+            this.cnfHcLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.cnfHcLbl.Name = "cnfHcLbl";
-            this.cnfHcLbl.Size = new System.Drawing.Size(107, 17);
+            this.cnfHcLbl.Size = new System.Drawing.Size(83, 13);
             this.cnfHcLbl.TabIndex = 8;
             this.cnfHcLbl.Text = "CNF Hashcode:";
             this.cnfHcLbl.UseMnemonic = false;
@@ -126,9 +128,10 @@
             // dnfLbl
             // 
             this.dnfLbl.AutoSize = true;
-            this.dnfLbl.Location = new System.Drawing.Point(22, 239);
+            this.dnfLbl.Location = new System.Drawing.Point(16, 194);
+            this.dnfLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dnfLbl.Name = "dnfLbl";
-            this.dnfLbl.Size = new System.Drawing.Size(40, 17);
+            this.dnfLbl.Size = new System.Drawing.Size(32, 13);
             this.dnfLbl.TabIndex = 9;
             this.dnfLbl.Text = "DNF:";
             this.dnfLbl.UseMnemonic = false;
@@ -136,9 +139,10 @@
             // cnfLbl
             // 
             this.cnfLbl.AutoSize = true;
-            this.cnfLbl.Location = new System.Drawing.Point(23, 271);
+            this.cnfLbl.Location = new System.Drawing.Point(17, 257);
+            this.cnfLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.cnfLbl.Name = "cnfLbl";
-            this.cnfLbl.Size = new System.Drawing.Size(39, 17);
+            this.cnfLbl.Size = new System.Drawing.Size(31, 13);
             this.cnfLbl.TabIndex = 10;
             this.cnfLbl.Text = "CNF:";
             this.cnfLbl.UseMnemonic = false;
@@ -146,9 +150,10 @@
             // nandifyLbl
             // 
             this.nandifyLbl.AutoSize = true;
-            this.nandifyLbl.Location = new System.Drawing.Point(23, 299);
+            this.nandifyLbl.Location = new System.Drawing.Point(13, 326);
+            this.nandifyLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nandifyLbl.Name = "nandifyLbl";
-            this.nandifyLbl.Size = new System.Drawing.Size(60, 17);
+            this.nandifyLbl.Size = new System.Drawing.Size(46, 13);
             this.nandifyLbl.TabIndex = 11;
             this.nandifyLbl.Text = "Nandify:";
             this.nandifyLbl.UseMnemonic = false;
@@ -156,17 +161,18 @@
             // hcTextLbl
             // 
             this.hcTextLbl.AutoSize = true;
-            this.hcTextLbl.Location = new System.Drawing.Point(128, 121);
+            this.hcTextLbl.Location = new System.Drawing.Point(96, 98);
+            this.hcTextLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hcTextLbl.Name = "hcTextLbl";
-            this.hcTextLbl.Size = new System.Drawing.Size(0, 17);
+            this.hcTextLbl.Size = new System.Drawing.Size(0, 13);
             this.hcTextLbl.TabIndex = 12;
             // 
             // showAllBtn
             // 
-            this.showAllBtn.Location = new System.Drawing.Point(138, 80);
-            this.showAllBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.showAllBtn.Location = new System.Drawing.Point(104, 65);
+            this.showAllBtn.Margin = new System.Windows.Forms.Padding(2);
             this.showAllBtn.Name = "showAllBtn";
-            this.showAllBtn.Size = new System.Drawing.Size(261, 23);
+            this.showAllBtn.Size = new System.Drawing.Size(196, 19);
             this.showAllBtn.TabIndex = 18;
             this.showAllBtn.Text = "Show DNF,CNF, hashcodes";
             this.showAllBtn.UseVisualStyleBackColor = true;
@@ -175,48 +181,55 @@
             // dnfTb
             // 
             this.dnfTb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dnfTb.Location = new System.Drawing.Point(67, 219);
-            this.dnfTb.MaximumSize = new System.Drawing.Size(250, 0);
+            this.dnfTb.Location = new System.Drawing.Point(50, 178);
+            this.dnfTb.Margin = new System.Windows.Forms.Padding(2);
+            this.dnfTb.MaximumSize = new System.Drawing.Size(188, 0);
             this.dnfTb.Multiline = true;
             this.dnfTb.Name = "dnfTb";
             this.dnfTb.ReadOnly = true;
-            this.dnfTb.Size = new System.Drawing.Size(25, 0);
+            this.dnfTb.Size = new System.Drawing.Size(19, 0);
             this.dnfTb.TabIndex = 19;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(68, 239);
+            this.textBox1.Location = new System.Drawing.Point(51, 194);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBox1.Size = new System.Drawing.Size(1779, 22);
+            this.textBox1.Size = new System.Drawing.Size(1335, 59);
             this.textBox1.TabIndex = 20;
             // 
             // cnfTb
             // 
-            this.cnfTb.Location = new System.Drawing.Point(68, 271);
+            this.cnfTb.Location = new System.Drawing.Point(52, 257);
+            this.cnfTb.Margin = new System.Windows.Forms.Padding(2);
+            this.cnfTb.Multiline = true;
             this.cnfTb.Name = "cnfTb";
             this.cnfTb.ReadOnly = true;
             this.cnfTb.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.cnfTb.Size = new System.Drawing.Size(1779, 22);
+            this.cnfTb.Size = new System.Drawing.Size(1335, 49);
             this.cnfTb.TabIndex = 21;
             // 
             // nandifyTb
             // 
-            this.nandifyTb.Location = new System.Drawing.Point(89, 299);
+            this.nandifyTb.Location = new System.Drawing.Point(63, 323);
+            this.nandifyTb.Margin = new System.Windows.Forms.Padding(2);
             this.nandifyTb.Multiline = true;
             this.nandifyTb.Name = "nandifyTb";
             this.nandifyTb.ReadOnly = true;
             this.nandifyTb.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.nandifyTb.Size = new System.Drawing.Size(1758, 22);
+            this.nandifyTb.Size = new System.Drawing.Size(1320, 73);
             this.nandifyTb.TabIndex = 22;
             // 
             // infixLbl
             // 
             this.infixLbl.AutoSize = true;
-            this.infixLbl.Location = new System.Drawing.Point(23, 340);
+            this.infixLbl.Location = new System.Drawing.Point(17, 415);
+            this.infixLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.infixLbl.Name = "infixLbl";
-            this.infixLbl.Size = new System.Drawing.Size(91, 17);
+            this.infixLbl.Size = new System.Drawing.Size(70, 13);
             this.infixLbl.TabIndex = 23;
             this.infixLbl.Text = "Infix notation:";
             this.infixLbl.UseMnemonic = false;
@@ -224,45 +237,49 @@
             // infixTextLbl
             // 
             this.infixTextLbl.AutoSize = true;
-            this.infixTextLbl.Location = new System.Drawing.Point(120, 340);
+            this.infixTextLbl.Location = new System.Drawing.Point(91, 415);
+            this.infixTextLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.infixTextLbl.Name = "infixTextLbl";
-            this.infixTextLbl.Size = new System.Drawing.Size(0, 17);
+            this.infixTextLbl.Size = new System.Drawing.Size(0, 13);
             this.infixTextLbl.TabIndex = 24;
             this.infixTextLbl.UseMnemonic = false;
             // 
             // cnfHcTxtLbl
             // 
             this.cnfHcTxtLbl.AutoSize = true;
-            this.cnfHcTxtLbl.Location = new System.Drawing.Point(134, 171);
+            this.cnfHcTxtLbl.Location = new System.Drawing.Point(100, 139);
+            this.cnfHcTxtLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.cnfHcTxtLbl.Name = "cnfHcTxtLbl";
-            this.cnfHcTxtLbl.Size = new System.Drawing.Size(0, 17);
+            this.cnfHcTxtLbl.Size = new System.Drawing.Size(0, 13);
             this.cnfHcTxtLbl.TabIndex = 25;
             this.cnfHcTxtLbl.UseMnemonic = false;
             // 
             // dnfHcTxtLbl
             // 
             this.dnfHcTxtLbl.AutoSize = true;
-            this.dnfHcTxtLbl.Location = new System.Drawing.Point(135, 146);
+            this.dnfHcTxtLbl.Location = new System.Drawing.Point(101, 119);
+            this.dnfHcTxtLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dnfHcTxtLbl.Name = "dnfHcTxtLbl";
-            this.dnfHcTxtLbl.Size = new System.Drawing.Size(0, 17);
+            this.dnfHcTxtLbl.Size = new System.Drawing.Size(0, 13);
             this.dnfHcTxtLbl.TabIndex = 26;
             this.dnfHcTxtLbl.UseMnemonic = false;
             // 
             // hcTxtLbl
             // 
             this.hcTxtLbl.AutoSize = true;
-            this.hcTxtLbl.Location = new System.Drawing.Point(134, 121);
+            this.hcTxtLbl.Location = new System.Drawing.Point(100, 98);
+            this.hcTxtLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hcTxtLbl.Name = "hcTxtLbl";
-            this.hcTxtLbl.Size = new System.Drawing.Size(0, 17);
+            this.hcTxtLbl.Size = new System.Drawing.Size(0, 13);
             this.hcTxtLbl.TabIndex = 27;
             this.hcTxtLbl.UseMnemonic = false;
             // 
             // showSimplifiedBtn
             // 
-            this.showSimplifiedBtn.Location = new System.Drawing.Point(580, 80);
-            this.showSimplifiedBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.showSimplifiedBtn.Location = new System.Drawing.Point(435, 65);
+            this.showSimplifiedBtn.Margin = new System.Windows.Forms.Padding(2);
             this.showSimplifiedBtn.Name = "showSimplifiedBtn";
-            this.showSimplifiedBtn.Size = new System.Drawing.Size(210, 23);
+            this.showSimplifiedBtn.Size = new System.Drawing.Size(158, 19);
             this.showSimplifiedBtn.TabIndex = 28;
             this.showSimplifiedBtn.Text = "Show simplified truth table";
             this.showSimplifiedBtn.UseVisualStyleBackColor = true;
@@ -271,9 +288,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 199);
+            this.label1.Location = new System.Drawing.Point(16, 162);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 17);
+            this.label1.Size = new System.Drawing.Size(98, 13);
             this.label1.TabIndex = 29;
             this.label1.Text = "Nandify Hashcode:";
             this.label1.UseMnemonic = false;
@@ -281,18 +299,19 @@
             // nandifyTextLbl
             // 
             this.nandifyTextLbl.AutoSize = true;
-            this.nandifyTextLbl.Location = new System.Drawing.Point(156, 199);
+            this.nandifyTextLbl.Location = new System.Drawing.Point(117, 162);
+            this.nandifyTextLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nandifyTextLbl.Name = "nandifyTextLbl";
-            this.nandifyTextLbl.Size = new System.Drawing.Size(0, 17);
+            this.nandifyTextLbl.Size = new System.Drawing.Size(0, 13);
             this.nandifyTextLbl.TabIndex = 30;
             this.nandifyTextLbl.UseMnemonic = false;
             // 
             // AutomataLogicEngineeringForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1858, 582);
+            this.ClientSize = new System.Drawing.Size(1394, 473);
             this.Controls.Add(this.nandifyTextLbl);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.showSimplifiedBtn);
@@ -317,11 +336,10 @@
             this.Controls.Add(this.validInputLabel);
             this.Controls.Add(this.generateTreeBtn);
             this.Controls.Add(this.inputTextBox);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AutomataLogicEngineeringForm";
             this.Text = "Automata Logic Engineering";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.AutomataLogicEngineeringForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -111,10 +111,5 @@
         {
             this.InitializeTable(simplified: true);
         }
-
-        private void AutomataLogicEngineeringForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

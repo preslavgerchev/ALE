@@ -86,7 +86,7 @@
             // directly.
             if (this.Symbol is Predicate p)
             {
-                return GetInfixNotationForPredicate(p.CharSymbol.ToString());
+                return GetInfixNotationForPredicate(p.ToString());
             }
 
             if (!(this.Symbol is Connective))
@@ -109,8 +109,8 @@
                 }
 
                 return this.GetInfixNotation(
-                    firstChild.CharSymbol.ToString(),
-                    secondChild?.CharSymbol.ToString() ?? string.Empty);
+                    firstChild.ToString(),
+                    secondChild?.ToString() ?? string.Empty);
             }
 
             // If we have a predicate and a connective as children then we can use the value of the predicate 
@@ -123,8 +123,8 @@
                 var connectiveIndex = this.Children.IndexOf(connective);
 
                 return connectiveIndex == 0
-                    ? this.GetInfixNotation(connective.GetInfixNotation(), predicate.CharSymbol.ToString())
-                    : this.GetInfixNotation(predicate.CharSymbol.ToString(), connective.GetInfixNotation());
+                    ? this.GetInfixNotation(connective.GetInfixNotation(), predicate.ToString())
+                    : this.GetInfixNotation(predicate.ToString(), connective.GetInfixNotation());
             }
 
             // Else we have a connective. If it's negation then only use the infix notation from the firt child.
@@ -148,7 +148,7 @@
             // directly.
             if (this.Symbol is Predicate p)
             {
-                return p.CharSymbol.ToString();
+                return p.ToString();
             }
 
             if (!(this.Symbol is Connective))
@@ -171,8 +171,8 @@
                 }
 
                 return this.Nandify(
-                    firstChild.CharSymbol.ToString(),
-                    secondChild?.CharSymbol.ToString() ?? string.Empty);
+                    firstChild.ToString(),
+                    secondChild?.ToString() ?? string.Empty);
             }
 
             // If we have a predicate and a connective as children then we can use the value of the predicate 
@@ -185,8 +185,8 @@
                 var connectiveIndex = this.Children.IndexOf(connective);
 
                 return connectiveIndex == 0
-                    ? this.Nandify(connective.Nandify(), predicate.CharSymbol.ToString())
-                    : this.Nandify(predicate.CharSymbol.ToString(), connective.Nandify());
+                    ? this.Nandify(connective.Nandify(), predicate.ToString())
+                    : this.Nandify(predicate.ToString(), connective.Nandify());
             }
 
             // Else we have a connective. If it's negation then only use the infix notation from the firt child.
@@ -267,13 +267,7 @@
         /// connective type may be a NOT (~) in which case only one value is needed.</param>
         /// <returns>The result of the connective, applied to the provided values.</returns>
         private bool Apply(bool firstValue, bool secondValue = false)
-        {
-            // We cannot apply anything on a node that's not connective.
-            if (!(this.Symbol is Connective))
-            {
-                throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
-            }
-
+        {   
             var symbolConn = (Connective)this.Symbol;
             switch (symbolConn.Type)
             {
@@ -305,12 +299,7 @@
         {
             firstPredicate = GetInfixNotationForPredicate(firstPredicate);
             secondPredicate = GetInfixNotationForPredicate(secondPredicate);
-            // We cannot apply anything on a node that's not connective.
-            if (!(this.Symbol is Connective))
-            {
-                throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
-            }
-
+            
             var symbolConn = (Connective)this.Symbol;
             switch (symbolConn.Type)
             {
@@ -340,12 +329,6 @@
         /// <returns>The result of applying infix notation to the provided values.</returns>
         private string Nandify(string firstPredicate, string secondPredicate = "")
         {
-            // We cannot apply anything on a node that's not connective.
-            if (!(this.Symbol is Connective))
-            {
-                throw new Exception("Internal error. Cannot call Apply(..) for a predicate.");
-            }
-
             var symbolConn = (Connective)this.Symbol;
             switch (symbolConn.Type)
             {

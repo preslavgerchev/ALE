@@ -58,6 +58,7 @@
     <Compile Include="InfixNotationTests.cs" />
     <Compile Include="NodeTreeCreatorTests.cs" />
     <Compile Include="BInaryToHashcodeTests.cs" />
+    <Compile Include="SymbolsTests.cs" />
     <Compile Include="ValidationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestExtensions.cs" />

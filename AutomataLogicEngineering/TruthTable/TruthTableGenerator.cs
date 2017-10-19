@@ -32,7 +32,7 @@
             }
 
             var header = new TruthTableHeader(allPredicates
-                .Select(x => x.CharSymbol.ToString())
+                .Select(x => x.ToString())
                 .Concat(new[] { "Result" }).ToList());
 
             var table = new TruthTable(header, rows);

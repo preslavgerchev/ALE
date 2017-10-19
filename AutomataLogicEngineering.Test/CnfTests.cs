@@ -37,5 +37,22 @@
                 }
             }
         }
+
+        /// <summary>
+        /// A test method, verifying that if the input is a tautology it can only be converted to a CNF form.
+        /// </summary>
+        [TestMethod]
+        public void TruthTable_Contradiction_Test()
+        {
+            var input = "~(%(~(%(R,X)),&(=(0,=(R,|(Q,&(R,0)))),Q)))";
+            var node = NodeTreeCreator.Initialize(input);
+            var normalTruthTable = TruthTableGenerator.GenerateTruthTable(node);
+            Assert.IsTrue(normalTruthTable.CanBeConvertedToCnf);
+            Assert.IsFalse(normalTruthTable.CanBeConvertedToDnf);
+            var cnf = normalTruthTable.ToCnfForm();
+            var cnfNode = NodeTreeCreator.Initialize(cnf);
+            var cnfTruthTable = TruthTableGenerator.GenerateTruthTable(cnfNode);
+            Assert.AreEqual(cnfTruthTable.HexadecimalResult, normalTruthTable.HexadecimalResult);
+        }
     }
 }
